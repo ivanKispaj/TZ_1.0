@@ -31,7 +31,7 @@ struct MainSceneView: View {
                         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 0))
                         
-                        VStack
+                        VStack(alignment: .leading)
                         {
                             hotelData(viewData: viewData)
                         }
@@ -148,26 +148,29 @@ struct MainSceneView: View {
     
     //MARK: - HotelData
     @ViewBuilder private func hotelData(viewData: HotelPresentModel) -> some View {
-        HStack {
+        HStack
+        {
             Text("Об отеле")
                 .font(Constants.Fonts.sfpro22Regular)
+                .foregroundColor(Constants.Colors.black)
             Spacer()
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-        VStack(alignment: .leading){
+        
             ForEach(viewData.peculiarities, id: \.self) { data in
-                HStack{
+                VStack(alignment: .leading)
+                {
                     Text(data)
-                        .background(Constants.Colors.backGroundPeculiarities)
+                        .font(Constants.Fonts.sfpro16Regular)
                         .foregroundColor(Constants.Colors.greyTintColor)
-                        .padding(5)
-                        .cornerRadius(5)
-                    
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 }
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                .background(Constants.Colors.backGroundPeculiarities)
+                .cornerRadius(5)
+
             }
             
-        }
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
         HStack
         {
             Text(viewData.hotelDescription)
