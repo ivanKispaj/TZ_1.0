@@ -67,11 +67,10 @@ struct CustTextField: View {
                     HStack
                     {
                         DatePicker("", selection: $selectedDate, displayedComponents: .date)
-                            .foregroundColor(Constants.Colors.black)
+                            .colorMultiply(Constants.Colors.textFieldForeground)
                             .environment(\.locale, Locale.init(identifier: "ru-RU"))
                             .datePickerStyle(.wheel)
-                            .background(Color.white)
-                            .cornerRadius(15)
+                            .background(Constants.Colors.textFieldBackground)
                             .onChange(of: selectedDate) { newValue in
                                 value = dateFormatter.string(from: newValue)
                             }

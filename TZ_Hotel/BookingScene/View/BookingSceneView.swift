@@ -630,9 +630,9 @@ struct BookingSceneView: View
     }
 }
 
-//
-//struct BookingSceneView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookingSceneView(sceneTitle: "Test", viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>()))
-//    }
-//}
+
+struct BookingSceneView_Previews: PreviewProvider {
+    static var previews: some View {
+        BookingSceneView(sceneTitle: "Test", viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>()))
+    }
+}
