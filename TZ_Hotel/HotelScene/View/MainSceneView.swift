@@ -27,7 +27,7 @@ struct MainSceneView: View {
                             hotelShortData(viewData: viewData)
                             
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 0))
                         
@@ -35,7 +35,7 @@ struct MainSceneView: View {
                         {
                             hotelData(viewData: viewData)
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 0))
                         
@@ -48,30 +48,38 @@ struct MainSceneView: View {
                             
                             
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                     }
                     .background(Constants.Colors.basicBackground)
                 }
             } else
             {
-                ProgressView("Search...")
-                
-                    .onAppear {
-                        if viewModel.viewData == nil{
-                            viewModel.fetchData()
+                Spacer()
+                HStack
+                {
+                    Spacer()
+                    ProgressView("Search...")
+                        .tint(Constants.Colors.black)
+                        .foregroundColor(Constants.Colors.black)
+                        .onAppear {
+                            if viewModel.viewData == nil{
+                                viewModel.fetchData()
+                            }
                         }
-                    }
-                
+                    Spacer()
+                }
+                Spacer()
                 
             }
         }
+        .background(Constants.Colors.white)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack{
                     Text("Отель")
                         .font(Constants.Fonts.headline1)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Constants.Colors.black)
                 }
             }
         }
@@ -104,6 +112,7 @@ struct MainSceneView: View {
         {
             Text(viewData.name)
                 .font(Constants.Fonts.sfpro22Regular)
+                .foregroundColor(Constants.Colors.black)
             Spacer()
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
@@ -123,13 +132,16 @@ struct MainSceneView: View {
         {
             Text("от")
                 .font(Constants.Fonts.sfpro30Medium)
+                .foregroundColor(Constants.Colors.black)
             Text(String(viewModel.moneyPresent(viewData.minPrice)))
+                .foregroundColor(Constants.Colors.black)
                 .font(Constants.Fonts.sfpro30Medium)
             Text(viewData.priceDescription)
                 .font(Constants.Fonts.sfpro14Light)
                 .foregroundColor(Constants.Colors.greyTintColor)
             Spacer()
         }
+        
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10))
         
     }
@@ -287,9 +299,9 @@ struct MainSceneView: View {
     
 }
 
-
-
-
+//
+//
+//
 //struct MainSceneView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>()))

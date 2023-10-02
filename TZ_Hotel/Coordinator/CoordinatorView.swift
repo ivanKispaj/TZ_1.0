@@ -18,6 +18,7 @@ struct CoordinatorView: View
                     coordinator.build(page: page)
                 }
         }
+        .background(Constants.Colors.white)
         .environmentObject(coordinator)
         
     }

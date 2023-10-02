@@ -43,7 +43,7 @@ struct BookingSceneView: View
     
     var body: some View
     {
-        ZStack
+        VStack
         {
             if let viewData = viewModel.viewData
             {
@@ -55,21 +55,21 @@ struct BookingSceneView: View
                         {
                             hotelShortData(viewData: viewData)
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                         
                         VStack (alignment: .leading)
                         {
                             tourInfo(viewData: viewData)
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                         
                         VStack (alignment: .leading)
                         {
                             buyerInformation(viewData: viewData)
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                         
                         ForEach(0..<viewModel.tourists.count, id: \.self) { index in
@@ -77,7 +77,7 @@ struct BookingSceneView: View
                             {
                                 self.tourist(viewData: viewData, index: index)
                             }
-                            .background(Color.white)
+                            .background(Constants.Colors.white)
                             .cornerRadius(15)
                         }
                         
@@ -87,14 +87,14 @@ struct BookingSceneView: View
                                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                             
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                         
                         VStack (alignment: .leading)
                         {
                             paymentTour(viewData: viewData)
                         }
-                        .background(Color.white)
+                        .background(Constants.Colors.white)
                         .cornerRadius(15)
                     }
                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
@@ -116,22 +116,29 @@ struct BookingSceneView: View
                 }
             } else
             {
-                ProgressView("Load...")
-                
-                    .onAppear {
-                        if viewModel.viewData == nil{
+                Spacer()
+                HStack
+                {
+                    Spacer()
+                    ProgressView("Search...")
+                        .tint(Constants.Colors.black)
+                        .foregroundColor(Constants.Colors.black)
+                        .onAppear {
                             viewModel.fetchData()
                         }
-                    }
+                    Spacer()
+                }
+                Spacer()
             }
         }
+        .background(Constants.Colors.white)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack{
                     Text(sceneTitle)
                         .font(Constants.Fonts.headline1)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Constants.Colors.black)
                 }
             }
         }
@@ -289,7 +296,7 @@ struct BookingSceneView: View
                 
             } label: {
                 Image(systemName: "plus")
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Constants.Colors.white)
                 
             }
             .frame(width: 32,height: 32)
@@ -319,6 +326,7 @@ struct BookingSceneView: View
         {
             Text("Информация о покупателе")
                 .font(Constants.Fonts.sfpro22Regular)
+                .foregroundColor(Constants.Colors.black)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             VStack
             {
@@ -333,6 +341,7 @@ struct BookingSceneView: View
                         .font(Constants.Fonts.sfpro16Light)
                         .keyboardType(.decimalPad)
                         .focused($isStartEditingPhone)
+                        .foregroundColor(Constants.Colors.textFieldForeground)
                         .onChange(of: phoneNumber) { newValue in
                             
                             if (newValue.count > phoneMask.count)
@@ -389,6 +398,7 @@ struct BookingSceneView: View
                         .font(Constants.Fonts.callout2)
                         .foregroundColor(Constants.Colors.textFieldPlace)
                     TextField("", text: $email)
+                        .foregroundColor(Constants.Colors.textFieldForeground)
                         .keyboardType(.emailAddress)
                         .font(Constants.Fonts.sfpro16Light)
                         .focused($isStartEditingPhone)
@@ -563,6 +573,7 @@ struct BookingSceneView: View
                 {
                     Text(viewData.hotelName)
                         .font(Constants.Fonts.sfpro22Regular)
+                        .foregroundColor(Constants.Colors.black)
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
@@ -619,7 +630,7 @@ struct BookingSceneView: View
     }
 }
 
-
+//
 //struct BookingSceneView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        BookingSceneView(sceneTitle: "Test", viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>()))

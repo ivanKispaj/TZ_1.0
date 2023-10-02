@@ -20,6 +20,8 @@ struct CustTextField: View {
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru-RU")
+        formatter.dateFormat = "dd.MM.yyyy"
         formatter.dateStyle = .medium
         return formatter
     }()
@@ -43,6 +45,7 @@ struct CustTextField: View {
                 HStack
                 {
                     TextField("", text: $value)
+                        .foregroundColor(Constants.Colors.textFieldForeground)
                         .font(Constants.Fonts.sfpro16Light)
                         .focused($isFocused)
                     Spacer()
@@ -56,6 +59,7 @@ struct CustTextField: View {
                 {
                     Text(value)
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                        .foregroundColor(Constants.Colors.black)
                     
                 }
                 if dataPickerShow && wihtDataPicker
@@ -63,6 +67,8 @@ struct CustTextField: View {
                     HStack
                     {
                         DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                            .foregroundColor(Constants.Colors.black)
+                            .environment(\.locale, Locale.init(identifier: "ru-RU"))
                             .datePickerStyle(.wheel)
                             .background(Color.white)
                             .cornerRadius(15)

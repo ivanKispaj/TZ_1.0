@@ -37,7 +37,7 @@ struct RoomsSceneView: View
                                     
                                     Text(viewModel.viewData[modelIndex].name)
                                         .font(Constants.Fonts.sfpro22Regular)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Constants.Colors.black)
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
                                     
                                     peculiarties(viewModel.viewData[modelIndex].peculiarties)
@@ -48,6 +48,7 @@ struct RoomsSceneView: View
                                     {
                                         Text(String(viewModel.moneyPresent(modelIndex)))
                                             .font(Constants.Fonts.sfpro30Medium)
+                                            .foregroundColor(Constants.Colors.black)
                                         Text(viewModel.viewData[modelIndex].priceDescription)
                                             .font(Constants.Fonts.sfpro14Light)
                                             .foregroundColor(Constants.Colors.greyTintColor)
@@ -59,7 +60,7 @@ struct RoomsSceneView: View
                                         coordinator.push(.booking)
                                     })
                                 }
-                                .background(Color.white)
+                                .background(Constants.Colors.white)
                                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                                 .cornerRadius(12)
                                 
@@ -72,12 +73,21 @@ struct RoomsSceneView: View
                 }
             } else
             {
-                ProgressView("Load....")
-                    .onAppear {
-                        viewModel.fetchData()
-                    }
-            }
+                Spacer()
+                HStack
+                {
+                    Spacer()
+                    ProgressView("Search...")
+                        .tint(Constants.Colors.black)
+                        .foregroundColor(Constants.Colors.black)
+                        .onAppear {
+                            viewModel.fetchData()
+                        }
+                    Spacer()
+                }
+                Spacer()            }
         }
+        .background(Constants.Colors.white)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("")
         .toolbar {
@@ -85,7 +95,7 @@ struct RoomsSceneView: View
                 VStack{
                     Text(sceneTitle)
                         .font(Constants.Fonts.headline1)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Constants.Colors.black)
                 }
             }
         }

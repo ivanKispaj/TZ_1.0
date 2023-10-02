@@ -26,6 +26,21 @@ enum Constants
     {
         
         
+        static var textFieldForeground: Color
+        {
+            return Color(hex: 0x14142B)
+        }
+        
+        static var black: Color
+        {
+            return Color(hex: 0x000000)
+        }
+        
+        static var white: Color
+        {
+            return Color(hex: 0xFFFFFF)
+        }
+        
         static var textFieldWarning: Color
         {
             return Color(hex: 0xEB5757,alpha: 0.15)

@@ -53,6 +53,7 @@ struct LastScene: View
             }
             
         }
+        .background(Constants.Colors.white)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
         .toolbar {
@@ -60,7 +61,7 @@ struct LastScene: View
                 VStack{
                     Text(title)
                         .font(Constants.Fonts.headline1)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Constants.Colors.black)
                     
                 }
             }
