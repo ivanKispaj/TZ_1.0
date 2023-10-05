@@ -18,9 +18,9 @@ struct HotelPresentModel: Identifiable
     let ratingDescription: String
     var imageData: [UIImage]
     let hotelDescription: String
-    let peculiarities: [String]
+    let peculiarities: [[String]]
     
-    init(id: Int, name: String, adress: String, minPrice: Int, priceDescription: String, rating: Int, ratingDescription: String, imageData: [UIImage], hotelDescription: String, peculiarities: [String]) {
+    init(id: Int, name: String, adress: String, minPrice: Int, priceDescription: String, rating: Int, ratingDescription: String, imageData: [UIImage], hotelDescription: String, peculiarities: [[String]]) {
         self.id = id
         self.name = name
         self.adress = adress

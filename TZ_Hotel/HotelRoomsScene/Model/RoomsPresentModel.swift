@@ -14,6 +14,6 @@ struct RoomsPresentModel: Identifiable, Hashable
     let name: String
     let price: Int
     let priceDescription: String
-    let peculiarties: [String]
+    let peculiarities: [[String]]
     var imgData: [UIImage]
 }

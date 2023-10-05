@@ -29,7 +29,7 @@ struct LastScene: View
                 VStack(alignment: .center)
                 {
                     Text("Ваш заказ принят в работу")
-                        .font(Constants.Fonts.sfpro22Regular)
+                        .font(Font(Constants.Fonts.sfpro22Regular))
                 }
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 0, trailing: 10))
                 
@@ -38,7 +38,7 @@ struct LastScene: View
                     
                     Text("Подтверждение заказа №\(String(Int.random(in: 1000...60000))) может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.")
                         .multilineTextAlignment(.center)
-                        .font(Constants.Fonts.sfpro16Light)
+                        .font(Font(Constants.Fonts.sfpro16Light))
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                 }
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -60,7 +60,7 @@ struct LastScene: View
             ToolbarItem(placement: .principal) {
                 VStack{
                     Text(title)
-                        .font(Constants.Fonts.headline1)
+                        .font(Font(Constants.Fonts.headline1))
                         .foregroundColor(Constants.Colors.black)
                     
                 }
@@ -68,6 +68,8 @@ struct LastScene: View
         }
     }
 }
+
+
 
 //
 //struct LastScene_Previews: PreviewProvider {

@@ -36,21 +36,24 @@ struct RoomsSceneView: View
                                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
                                     
                                     Text(viewModel.viewData[modelIndex].name)
-                                        .font(Constants.Fonts.sfpro22Regular)
+                                        .font(Font(Constants.Fonts.sfpro22Regular))
                                         .foregroundColor(Constants.Colors.black)
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
                                     
-                                    peculiarties(viewModel.viewData[modelIndex].peculiarties)
+                                    VStack(alignment: .leading)
+                                    {
+                                        peculiartiesView(viewModel.viewData[modelIndex].peculiarities)
+                                    }
                                     
                                     buttonInfo()
                                     
                                     HStack(alignment: .bottom)
                                     {
                                         Text(String(viewModel.moneyPresent(modelIndex)))
-                                            .font(Constants.Fonts.sfpro30Medium)
+                                            .font(Font(Constants.Fonts.sfpro30Medium))
                                             .foregroundColor(Constants.Colors.black)
                                         Text(viewModel.viewData[modelIndex].priceDescription)
-                                            .font(Constants.Fonts.sfpro14Light)
+                                            .font(Font(Constants.Fonts.sfpro14Light))
                                             .foregroundColor(Constants.Colors.greyTintColor)
                                             .padding(5)
                                     }
@@ -94,7 +97,7 @@ struct RoomsSceneView: View
             ToolbarItem(placement: .principal) {
                 VStack{
                     Text(sceneTitle)
-                        .font(Constants.Fonts.headline1)
+                        .font(Font(Constants.Fonts.headline1))
                         .foregroundColor(Constants.Colors.black)
                 }
             }
@@ -127,26 +130,33 @@ struct RoomsSceneView: View
         }
     }
     
-    @ViewBuilder private func peculiarties(_ data: [String]) -> some View {
-        VStack (alignment: .leading)
-        {
-            ForEach(0..<data.count, id: \.self) { index in
-                VStack{
-                    Text(data[index])
-                        .font(Constants.Fonts.sfpro16Regular)
-                        .foregroundColor(Constants.Colors.greyTintColor)
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+    @ViewBuilder private func peculiartiesView(_ data: [[String]]) -> some View {
+//        VStack (alignment: .leading)
+//        {
+            ForEach(data, id: \.self) { arr in
+                HStack(spacing: 0) {
+
+                    peculiartiesData(arr)
                 }
-                .frame(height: 29)
-                .background(Constants.Colors.backGroundPeculiarities)
-                .cornerRadius(5)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
             }
         }
         
-    }
+//    }
 }
 
+@ViewBuilder private func peculiartiesData(_ data: [String]) -> some View {
+    ForEach(data, id: \.self) { word in
+        Text(word)
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            .font(Font(Constants.Fonts.sfpro16Regular))
+            .background(Constants.Colors.backGroundPeculiarities)
+            .foregroundColor(Constants.Colors.greyTintColor)
+            .cornerRadius(5)
+        Spacer()
+            .frame(width: 5, alignment: .leading)
+    }
+}
 
 //struct RoomsSceneView_Previews: PreviewProvider {
 //    static var previews: some View {

@@ -23,7 +23,7 @@ struct DropDownView: View
             HStack
             {
                 Text("Турист \(touristStr)")
-                    .font((Constants.Fonts.sfpro22Regular))
+                    .font(Font(Constants.Fonts.sfpro22Regular))
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 Spacer()
                 Button {

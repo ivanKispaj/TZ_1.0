@@ -58,7 +58,7 @@ class RoomsViewMoedel: ObservableObject
                                                       name: room.name,
                                                       price: room.price,
                                                       priceDescription: room.priceDescription,
-                                                      peculiarties: room.peculiarities,
+                                                      peculiarities: room.peculiarities.createLineArrsString(Constants.Fonts.sfpro16Regular, 30),
                                                       imgData: [])
                     roomsPresModel.append(roomModel)
                     

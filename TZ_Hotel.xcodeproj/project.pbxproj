@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8021FD082ACD3164006DBF6D /* Extension_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD072ACD3164006DBF6D /* Extension_String.swift */; };
+		8021FD0A2ACD31C6006DBF6D /* Extension_Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD092ACD31C6006DBF6D /* Extension_Array.swift */; };
+		8021FD182ACDE103006DBF6D /* Extension_Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD172ACDE103006DBF6D /* Extension_Font.swift */; };
 		8086F7182AC3D9FA00346571 /* TZ_HotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZ_HotelApp.swift */; };
 		8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7192AC3D9FA00346571 /* MainSceneView.swift */; };
 		8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71B2AC3D9FC00346571 /* Assets.xcassets */; };
@@ -21,7 +24,7 @@
 		8086F7492AC690E700346571 /* HotelParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7482AC690E700346571 /* HotelParseModel.swift */; };
 		8086F74B2AC69F4100346571 /* HotelPresentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F74A2AC69F4100346571 /* HotelPresentModel.swift */; };
 		8086F74F2AC6FE2800346571 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F74E2AC6FE2800346571 /* Image.xcassets */; };
-		8086F7532AC7173E00346571 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7522AC7173E00346571 /* ViewExtensions.swift */; };
+		8086F7532AC7173E00346571 /* Extension_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7522AC7173E00346571 /* Extension_View.swift */; };
 		8086F7552AC7177F00346571 /* CornerRadiusStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7542AC7177F00346571 /* CornerRadiusStyle.swift */; };
 		8086F75D2AC71A2D00346571 /* RoomsParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F75C2AC71A2D00346571 /* RoomsParseModel.swift */; };
 		8086F75F2AC71A4300346571 /* RoomsPresentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F75E2AC71A4300346571 /* RoomsPresentModel.swift */; };
@@ -41,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8021FD072ACD3164006DBF6D /* Extension_String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_String.swift; sourceTree = "<group>"; };
+		8021FD092ACD31C6006DBF6D /* Extension_Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Array.swift; sourceTree = "<group>"; };
+		8021FD0E2ACDC71D006DBF6D /* TZ-Hotel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TZ-Hotel-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8021FD172ACDE103006DBF6D /* Extension_Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Font.swift; sourceTree = "<group>"; };
 		8086F7142AC3D9FA00346571 /* TZ_Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZ_Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8086F7172AC3D9FA00346571 /* TZ_HotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZ_HotelApp.swift; sourceTree = "<group>"; };
 		8086F7192AC3D9FA00346571 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
@@ -56,7 +63,7 @@
 		8086F7482AC690E700346571 /* HotelParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelParseModel.swift; sourceTree = "<group>"; };
 		8086F74A2AC69F4100346571 /* HotelPresentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelPresentModel.swift; sourceTree = "<group>"; };
 		8086F74E2AC6FE2800346571 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
-		8086F7522AC7173E00346571 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		8086F7522AC7173E00346571 /* Extension_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_View.swift; sourceTree = "<group>"; };
 		8086F7542AC7177F00346571 /* CornerRadiusStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusStyle.swift; sourceTree = "<group>"; };
 		8086F75C2AC71A2D00346571 /* RoomsParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsParseModel.swift; sourceTree = "<group>"; };
 		8086F75E2AC71A4300346571 /* RoomsPresentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsPresentModel.swift; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 		8086F7162AC3D9FA00346571 /* TZ_Hotel */ = {
 			isa = PBXGroup;
 			children = (
+				8021FD0E2ACDC71D006DBF6D /* TZ-Hotel-Info.plist */,
 				8086F77D2AC95D6A00346571 /* LastScene */,
 				8086F76B2AC81D6A00346571 /* BookingScene */,
 				8086F7572AC7194000346571 /* HotelScene */,
@@ -214,7 +222,10 @@
 		8086F7512AC7172600346571 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8086F7522AC7173E00346571 /* ViewExtensions.swift */,
+				8086F7522AC7173E00346571 /* Extension_View.swift */,
+				8021FD072ACD3164006DBF6D /* Extension_String.swift */,
+				8021FD092ACD31C6006DBF6D /* Extension_Array.swift */,
+				8021FD172ACDE103006DBF6D /* Extension_Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +412,7 @@
 				8086F7332AC3E6DF00346571 /* Constants.swift in Sources */,
 				8086F7682AC80F8E00346571 /* SelectedButton.swift in Sources */,
 				8086F77C2AC92ADD00346571 /* CoordinatorView.swift in Sources */,
+				8021FD082ACD3164006DBF6D /* Extension_String.swift in Sources */,
 				8086F7432AC68B5F00346571 /* ConnectError.swift in Sources */,
 				8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */,
 				8086F7182AC3D9FA00346571 /* TZ_HotelApp.swift in Sources */,
@@ -410,8 +422,10 @@
 				8086F72A2AC3DFFA00346571 /* Coordinator.swift in Sources */,
 				8086F7742AC8367600346571 /* BookingViewModel.swift in Sources */,
 				8086F7782AC87F1800346571 /* TouristModel.swift in Sources */,
-				8086F7532AC7173E00346571 /* ViewExtensions.swift in Sources */,
+				8086F7532AC7173E00346571 /* Extension_View.swift in Sources */,
+				8021FD0A2ACD31C6006DBF6D /* Extension_Array.swift in Sources */,
 				8086F77F2AC95D9600346571 /* LastScene.swift in Sources */,
+				8021FD182ACDE103006DBF6D /* Extension_Font.swift in Sources */,
 				8086F7352AC3E72F00346571 /* MainViewModel.swift in Sources */,
 				8086F77A2AC881B100346571 /* DropDownView.swift in Sources */,
 				8086F74B2AC69F4100346571 /* HotelPresentModel.swift in Sources */,
@@ -553,6 +567,7 @@
 				DEVELOPMENT_TEAM = JJYZW38GT4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TZ-Hotel-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TZ_Hotel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -585,6 +600,7 @@
 				DEVELOPMENT_TEAM = JJYZW38GT4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TZ-Hotel-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TZ_Hotel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -616,7 +632,7 @@
 				8086F7212AC3D9FC00346571 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8086F7222AC3D9FC00346571 /* Build configuration list for PBXNativeTarget "TZ_Hotel" */ = {
 			isa = XCConfigurationList;
@@ -625,7 +641,7 @@
 				8086F7242AC3D9FC00346571 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

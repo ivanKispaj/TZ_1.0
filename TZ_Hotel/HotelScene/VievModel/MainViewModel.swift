@@ -10,9 +10,9 @@ import UIKit
 class MainViewModel: ObservableObject
 {
     @Published var viewData: HotelPresentModel?
-    private let service: any NetworkServiceProtocol
     
-    lazy var formater: NumberFormatter =
+    private let service: any NetworkServiceProtocol
+    lazy private var formater: NumberFormatter =
     {
         let formater = NumberFormatter()
         formater.numberStyle = .decimal
@@ -60,7 +60,7 @@ class MainViewModel: ObservableObject
                                                    ratingDescription: hotelModel.ratingDescription,
                                                    imageData: [],
                                                    hotelDescription: hotelModel.aboutTheHotel.hotelDescription,
-                                                   peculiarities: hotelModel.aboutTheHotel.peculiarities)
+                                                   peculiarities: hotelModel.aboutTheHotel.peculiarities.createLineArrsString(Constants.Fonts.sfpro16Regular, 30))
                 if let imgUrls = strUrls
                 {
                     for strUrl in imgUrls
@@ -80,18 +80,15 @@ class MainViewModel: ObservableObject
                 }
                 group.leave()
             }
-            
-            
         }
         
         group.notify(queue: DispatchQueue.main) { [weak self] in
-            guard let self = self else {return}
+            guard let self = self  else {return}
+            
             DispatchQueue.main.async {
                 self.viewData = hotelViewModel
             }
         }
-        
-        
-        
     }
+
 }

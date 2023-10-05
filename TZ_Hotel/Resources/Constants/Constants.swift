@@ -22,6 +22,7 @@ extension Color {
 
 enum Constants
 {
+    
     enum Colors
     {
         
@@ -142,56 +143,56 @@ enum Constants
     
     enum Fonts
     {
-        static var headline1: Font
+        
+        static var sfpro30Medium: UIFont
         {
-            return Font.system(size: 18,weight: .regular, design: .default)
+            return UIFont.systemFont(ofSize: 30, weight: .medium)
         }
         
-        static var playsholder17: Font
+        static var sfpro22Regular: UIFont
         {
-            return Font.system(size: 17,weight: .light, design: .default)
+            return UIFont.systemFont(ofSize: 22, weight: .regular)
         }
         
-        static var sfpro16Regular: Font
+        static var headline1: UIFont
         {
-            return Font.system(size: 16,weight: .regular, design: .default)
+            return UIFont.systemFont(ofSize: 18, weight: .regular)
         }
         
-        static var sfpro22Regular: Font
+        static var playsholder17: UIFont
         {
-            return Font.system(size: 22,weight: .regular, design: .default)
+            return UIFont.systemFont(ofSize: 17, weight: .light)
         }
         
-        static var sfpro14Regular: Font
+        static var sfpro16Bold: UIFont
         {
-            return Font.system(size: 14,weight: .regular, design: .default)
+            return UIFont.systemFont(ofSize: 16, weight: .bold)
         }
         
-        static var sfpro30Medium: Font
+        static var sfpro16Regular: UIFont
         {
-            return Font.system(size: 30,weight: .medium, design: .default)
+            return UIFont.systemFont(ofSize: 16, weight: .regular)
         }
         
-        static var sfpro14Light: Font
+        static var sfpro16Light: UIFont
         {
-            return Font.system(size: 14,weight: .light, design: .default)
+            return UIFont.systemFont(ofSize: 16, weight: .light)
         }
         
-        static var sfpro16Light: Font
+        static var sfpro14Regular: UIFont
         {
-            return Font.system(size: 16,weight: .light, design: .default)
+            return UIFont.systemFont(ofSize: 14, weight: .regular)
         }
         
-        static var sfpro16Bold: Font
+        static var sfpro14Light: UIFont
         {
-            return Font.system(size: 16,weight: .bold, design: .default)
+            return UIFont.systemFont(ofSize: 14, weight: .light)
         }
         
-        static var callout2: Font
+        static var callout2: UIFont
         {
-            return Font.system(size: 12,weight: .light, design: .default)
+            return UIFont.systemFont(ofSize: 12, weight: .light)
         }
-        
         
     }
     
@@ -209,3 +210,5 @@ enum Constants
         
     }
 }
+
+

@@ -78,7 +78,7 @@ struct MainSceneView: View {
             ToolbarItem(placement: .principal) {
                 VStack{
                     Text("Отель")
-                        .font(Constants.Fonts.headline1)
+                        .font(Font(Constants.Fonts.headline1))
                         .foregroundColor(Constants.Colors.black)
                 }
             }
@@ -94,10 +94,10 @@ struct MainSceneView: View {
                     .foregroundColor(Constants.Colors.ratingColor)
                     .frame(width: 15,height: 15)
                 Text(String(viewModel.viewData!.rating))
-                    .font(Constants.Fonts.sfpro16Regular)
+                    .font(Font(Constants.Fonts.sfpro16Regular))
                     .foregroundColor(Constants.Colors.ratingColor)
                 Text(viewData.ratingDescription)
-                    .font(Constants.Fonts.sfpro16Regular)
+                    .font(Font(Constants.Fonts.sfpro16Regular))
                     .foregroundColor(Constants.Colors.ratingColor)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -111,7 +111,7 @@ struct MainSceneView: View {
         HStack
         {
             Text(viewData.name)
-                .font(Constants.Fonts.sfpro22Regular)
+                .font(Font(Constants.Fonts.sfpro22Regular))
                 .foregroundColor(Constants.Colors.black)
             Spacer()
         }
@@ -123,7 +123,7 @@ struct MainSceneView: View {
             Button(viewData.adress) {
                 // any action
             }
-            .font(Constants.Fonts.sfpro14Regular)
+            .font(Font(Constants.Fonts.sfpro14Regular))
             Spacer()
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
@@ -131,13 +131,13 @@ struct MainSceneView: View {
         HStack(alignment: .bottom)
         {
             Text("от")
-                .font(Constants.Fonts.sfpro30Medium)
+                .font(Font(Constants.Fonts.sfpro30Medium))
                 .foregroundColor(Constants.Colors.black)
             Text(String(viewModel.moneyPresent(viewData.minPrice)))
                 .foregroundColor(Constants.Colors.black)
-                .font(Constants.Fonts.sfpro30Medium)
+                .font(Font(Constants.Fonts.sfpro30Medium))
             Text(viewData.priceDescription)
-                .font(Constants.Fonts.sfpro14Light)
+                .font(Font(Constants.Fonts.sfpro14Light))
                 .foregroundColor(Constants.Colors.greyTintColor)
             Spacer()
         }
@@ -151,34 +151,37 @@ struct MainSceneView: View {
         HStack
         {
             Text("Об отеле")
-                .font(Constants.Fonts.sfpro22Regular)
+                .font(Font(Constants.Fonts.sfpro22Regular))
                 .foregroundColor(Constants.Colors.black)
             Spacer()
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         
-            ForEach(viewData.peculiarities, id: \.self) { data in
-                VStack(alignment: .leading)
-                {
-                    Text(data)
-                        .font(Constants.Fonts.sfpro16Regular)
-                        .foregroundColor(Constants.Colors.greyTintColor)
+        ForEach(viewData.peculiarities, id: \.self) { arr in
+            HStack(spacing: 0) {
+                ForEach(arr, id: \.self) { word in
+                    Text(word)
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                        .font(Font(Constants.Fonts.sfpro16Regular))
+                        .background(Constants.Colors.backGroundPeculiarities)
+                        .foregroundColor(Constants.Colors.greyTintColor)
+                        .cornerRadius(5)
+                    Spacer()
+                        .frame(width: 5, alignment: .leading)
                 }
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                .background(Constants.Colors.backGroundPeculiarities)
-                .cornerRadius(5)
-
+                
             }
-            
-        HStack
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
+        }
+        
+        VStack
         {
             Text(viewData.hotelDescription)
                 .foregroundColor(Constants.Colors.colorDescription)
-                .font(Constants.Fonts.sfpro16Light)
+                .font(Font(Constants.Fonts.sfpro16Light))
                 .multilineTextAlignment(.leading)
         }
-        .padding(10)
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         
         VStack(spacing: 0)
         {
@@ -194,10 +197,10 @@ struct MainSceneView: View {
                     VStack(alignment: .leading)
                     {
                         Text("Удобства")
-                            .font(Constants.Fonts.sfpro16Regular)
+                            .font(Font(Constants.Fonts.sfpro16Regular))
                             .foregroundColor(Constants.Colors.buttonTitleBlack)
                         Text("Самое необходимое")
-                            .font(Constants.Fonts.sfpro14Regular)
+                            .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
                     Spacer()
@@ -230,10 +233,10 @@ struct MainSceneView: View {
                     VStack(alignment: .leading)
                     {
                         Text("Что включено")
-                            .font(Constants.Fonts.sfpro16Regular)
+                            .font(Font(Constants.Fonts.sfpro16Regular))
                             .foregroundColor(Constants.Colors.buttonTitleBlack)
                         Text("Самое необходимое")
-                            .font(Constants.Fonts.sfpro14Regular)
+                            .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
                     Spacer()
@@ -266,10 +269,10 @@ struct MainSceneView: View {
                     VStack(alignment: .leading)
                     {
                         Text("Что не включено")
-                            .font(Constants.Fonts.sfpro16Regular)
+                            .font(Font(Constants.Fonts.sfpro16Regular))
                             .foregroundColor(Constants.Colors.buttonTitleBlack)
                         Text("Самое необходимое")
-                            .font(Constants.Fonts.sfpro14Regular)
+                            .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
                     Spacer()

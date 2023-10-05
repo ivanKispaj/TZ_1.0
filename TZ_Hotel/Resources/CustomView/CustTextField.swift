@@ -33,7 +33,7 @@ struct CustTextField: View {
             {
                 Text(placeholder)
                     .foregroundColor(Constants.Colors.textFieldPlace)
-                    .font(onTapped ? Constants.Fonts.callout2 : Constants.Fonts.playsholder17)
+                    .font(onTapped ? Font(Constants.Fonts.callout2) : Font(Constants.Fonts.playsholder17))
                 Spacer()
                 
             }
@@ -46,7 +46,7 @@ struct CustTextField: View {
                 {
                     TextField("", text: $value)
                         .foregroundColor(Constants.Colors.textFieldForeground)
-                        .font(Constants.Fonts.sfpro16Light)
+                        .font(Font(Constants.Fonts.sfpro16Light))
                         .focused($isFocused)
                     Spacer()
                     
