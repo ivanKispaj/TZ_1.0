@@ -54,18 +54,7 @@ struct LastScene: View
             
         }
         .background(Constants.Colors.white)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarRole(.editor)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack{
-                    Text(title)
-                        .font(Font(Constants.Fonts.headline1))
-                        .foregroundColor(Constants.Colors.black)
-                    
-                }
-            }
-        }
+
     }
 }
 

@@ -7,34 +7,15 @@
 
 import UIKit
 
-class MainViewModel: ObservableObject
+class MainViewModel: MainViewModelProtocol
 {
     @Published var viewData: HotelPresentModel?
     
-    private let service: any NetworkServiceProtocol
-    lazy private var formater: NumberFormatter =
-    {
-        let formater = NumberFormatter()
-        formater.numberStyle = .decimal
-        formater.locale = Locale.current
-        formater.groupingSeparator = " "
-        
-        return formater
-    }()
+    internal let networkService: any NetworkServiceProtocol
     
     init(service: any NetworkServiceProtocol)
     {
-        self.service = service
-    }
-    
-    func moneyPresent(_ num: Int) -> String
-    {
-        if var money = formater.string(from: NSNumber(value: num))
-        {
-            money += " " + " \u{20BD}"
-            return money
-        }
-        return ""
+        self.networkService = service
     }
     
     func fetchData()
@@ -43,24 +24,18 @@ class MainViewModel: ObservableObject
         
         let group = DispatchGroup()
         var strUrls: [String]?
-        var hotelViewModel: HotelPresentModel?
+        var hotelPresentModel: HotelPresentModel?
         
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
-            self.service.loadDataToDecodableModel(url: url) { model, error in
+            self.networkService.loadDataToDecodableModel(url: url) { model, error in
                 guard error == nil else {return}
-                guard let hotelModel = model as? HotelParseModel else {return}
-                strUrls = hotelModel.imageUrls
-                hotelViewModel = HotelPresentModel(id: hotelModel.id,
-                                                   name: hotelModel.name,
-                                                   adress: hotelModel.adress,
-                                                   minPrice: hotelModel.minPrice,
-                                                   priceDescription: hotelModel.priceDescription,
-                                                   rating: hotelModel.rating,
-                                                   ratingDescription: hotelModel.ratingDescription,
-                                                   imageData: [],
-                                                   hotelDescription: hotelModel.aboutTheHotel.hotelDescription,
-                                                   peculiarities: hotelModel.aboutTheHotel.peculiarities.createLineArrsString(Constants.Fonts.sfpro16Regular, 30))
+                guard let parseModel = model as? HotelParseModel else {return}
+                strUrls = parseModel.imageUrls
+                hotelPresentModel = HotelPresentModel(data: parseModel)
+                DispatchQueue.main.async {
+                    self.viewData = hotelPresentModel
+                }
                 if let imgUrls = strUrls
                 {
                     for strUrl in imgUrls
@@ -68,14 +43,13 @@ class MainViewModel: ObservableObject
                         if let url = URL(string: strUrl)
                         {
                             group.enter()
-                            self.service.loadData(url: url) { respData, _ in
+                            self.networkService.loadData(url: url) { respData, _ in
                                 if let data = respData, let img = UIImage(data: data) {
-                                    hotelViewModel?.imageData.append(img)
+                                    hotelPresentModel?.imageData.append(img)
                                     group.leave()
                                 }
                             }
                         }
-                        
                     }
                 }
                 group.leave()
@@ -86,9 +60,9 @@ class MainViewModel: ObservableObject
             guard let self = self  else {return}
             
             DispatchQueue.main.async {
-                self.viewData = hotelViewModel
+                self.viewData = hotelPresentModel
             }
         }
     }
-
+    
 }

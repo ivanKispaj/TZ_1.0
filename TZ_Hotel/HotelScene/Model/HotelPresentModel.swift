@@ -9,28 +9,40 @@ import UIKit
 
 struct HotelPresentModel: Identifiable
 {
+    private var formatter = Formatter()
+    
     let id: Int
     let name: String
     let adress: String
-    let minPrice: Int
+    private let minPrice: Int
     let priceDescription: String
-    let rating: Int
+    let rating: String
     let ratingDescription: String
     var imageData: [UIImage]
     let hotelDescription: String
-    let peculiarities: [[String]]
+    private let peculiarities: [String]
     
-    init(id: Int, name: String, adress: String, minPrice: Int, priceDescription: String, rating: Int, ratingDescription: String, imageData: [UIImage], hotelDescription: String, peculiarities: [[String]]) {
-        self.id = id
-        self.name = name
-        self.adress = adress
-        self.minPrice = minPrice
-        self.priceDescription = priceDescription
-        self.rating = rating
-        self.ratingDescription = ratingDescription
-        self.imageData = imageData
-        self.hotelDescription = hotelDescription
-        self.peculiarities = peculiarities
+    init(data: HotelParseModel) {
+        self.id = data.id
+        self.name = data.name
+        self.adress = data.adress
+        self.minPrice = data.minPrice
+        self.priceDescription = data.priceDescription
+        self.rating = String(data.rating)
+        self.ratingDescription = data.ratingDescription
+        self.imageData = []
+        self.hotelDescription = data.aboutTheHotel.hotelDescription
+        self.peculiarities = data.aboutTheHotel.peculiarities
+    }
+
+    func getPeculiarities(font: UIFont, padding: CGFloat) -> [[String]]
+    {
+        peculiarities.createLineArrsString(font, padding)
+    }
+    
+    func getMinPrice() -> String
+    {
+        formatter.iтtegerToMoneyString(minPrice, with: "₽")
     }
 }
 

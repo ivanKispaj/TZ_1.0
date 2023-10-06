@@ -8,51 +8,51 @@
 import SwiftUI
 import UIKit
 
-struct RoomsSceneView: View
+struct RoomsSceneView<viewModel: RoomsViewModelProtocol>: View
 {
     @EnvironmentObject var coordinator: Coordinator
-    @State private var selectedIndex: Int? = nil
-    let sceneTitle: String
+    @ObservedObject var viewModel: viewModel
     
-    @ObservedObject var viewModel: RoomsViewMoedel
+    @State private var selectedIndex: Int? = nil
+    
     @State private var index: [Int] = [0,0]
     
     var body: some View
     {
         VStack
         {
-            if viewModel.viewData.count > 0
+            if self.viewModel.viewData.count > 0
             {
+                let data = self.viewModel.viewData
                 ScrollView
                 {
                     VStack(spacing: 0)
                     {
-                        
-                        ForEach(0..<viewModel.viewData.count, id: \.self) { modelIndex in
+                        ForEach(0..<data.count, id: \.self) { modelIndex in
                             Group {
                                 VStack(alignment: .leading,spacing: 0)
                                 {
-                                    CarouselImage(item: viewModel.viewData[modelIndex].imgData)
+                                    CarouselImage(item: data[modelIndex].imgData)
                                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
                                     
-                                    Text(viewModel.viewData[modelIndex].name)
+                                    Text(data[modelIndex].name)
                                         .font(Font(Constants.Fonts.sfpro22Regular))
                                         .foregroundColor(Constants.Colors.black)
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
                                     
                                     VStack(alignment: .leading)
                                     {
-                                        peculiartiesView(viewModel.viewData[modelIndex].peculiarities)
+                                        peculiartiesView(data[modelIndex].getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30))
                                     }
                                     
                                     buttonInfo()
                                     
                                     HStack(alignment: .bottom)
                                     {
-                                        Text(String(viewModel.moneyPresent(modelIndex)))
+                                        Text(data[modelIndex].getPrice())
                                             .font(Font(Constants.Fonts.sfpro30Medium))
                                             .foregroundColor(Constants.Colors.black)
-                                        Text(viewModel.viewData[modelIndex].priceDescription)
+                                        Text(data[modelIndex].priceDescription)
                                             .font(Font(Constants.Fonts.sfpro14Light))
                                             .foregroundColor(Constants.Colors.greyTintColor)
                                             .padding(5)
@@ -84,24 +84,18 @@ struct RoomsSceneView: View
                         .tint(Constants.Colors.black)
                         .foregroundColor(Constants.Colors.black)
                         .onAppear {
-                            viewModel.fetchData()
+                            if (self.viewModel.viewData.count == 0)
+                            {
+                                self.viewModel.fetchData()
+                                
+                            }
                         }
                     Spacer()
                 }
-                Spacer()            }
-        }
-        .background(Constants.Colors.white)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarTitle("")
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack{
-                    Text(sceneTitle)
-                        .font(Font(Constants.Fonts.headline1))
-                        .foregroundColor(Constants.Colors.black)
-                }
+                Spacer()
             }
         }
+        .background(Constants.Colors.white)
     }
     
     // MARK: - button info
@@ -131,18 +125,15 @@ struct RoomsSceneView: View
     }
     
     @ViewBuilder private func peculiartiesView(_ data: [[String]]) -> some View {
-//        VStack (alignment: .leading)
-//        {
-            ForEach(data, id: \.self) { arr in
-                HStack(spacing: 0) {
-
-                    peculiartiesData(arr)
-                }
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-            }
-        }
         
-//    }
+        ForEach(data, id: \.self) { arr in
+            HStack(spacing: 0) {
+                
+                peculiartiesData(arr)
+            }
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
+        }
+    }
 }
 
 @ViewBuilder private func peculiartiesData(_ data: [String]) -> some View {
@@ -157,6 +148,9 @@ struct RoomsSceneView: View
             .frame(width: 5, alignment: .leading)
     }
 }
+
+
+// MARK: - Preview
 
 //struct RoomsSceneView_Previews: PreviewProvider {
 //    static var previews: some View {

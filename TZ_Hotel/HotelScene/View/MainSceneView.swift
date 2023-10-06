@@ -8,15 +8,15 @@
 import SwiftUI
 
 
-struct MainSceneView: View {
+struct MainSceneView<viewModel: MainViewModelProtocol>: View {
     
-    @ObservedObject var viewModel: MainViewModel
     @EnvironmentObject var coordinator: Coordinator
-    @State private var index = 0
-    
+    @ObservedObject var viewModel: viewModel
+        
     var body: some View {
         VStack{
-            if let viewData = viewModel.viewData
+            if let viewData = self.viewModel.viewData
+                
             {
                 ScrollView {
                     VStack {
@@ -62,27 +62,16 @@ struct MainSceneView: View {
                         .tint(Constants.Colors.black)
                         .foregroundColor(Constants.Colors.black)
                         .onAppear {
-                            if viewModel.viewData == nil{
-                                viewModel.fetchData()
+                            if self.viewModel.viewData == nil{
+                                self.viewModel.fetchData()
                             }
                         }
                     Spacer()
                 }
                 Spacer()
-                
             }
         }
         .background(Constants.Colors.white)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                VStack{
-                    Text("Отель")
-                        .font(Font(Constants.Fonts.headline1))
-                        .foregroundColor(Constants.Colors.black)
-                }
-            }
-        }
     }
     
     
@@ -91,9 +80,10 @@ struct MainSceneView: View {
         HStack {
             HStack{
                 Image(systemName: "star.fill")
+                    .resizable()
                     .foregroundColor(Constants.Colors.ratingColor)
                     .frame(width: 15,height: 15)
-                Text(String(viewModel.viewData!.rating))
+                Text(String(self.viewModel.viewData!.rating))
                     .font(Font(Constants.Fonts.sfpro16Regular))
                     .foregroundColor(Constants.Colors.ratingColor)
                 Text(viewData.ratingDescription)
@@ -133,7 +123,7 @@ struct MainSceneView: View {
             Text("от")
                 .font(Font(Constants.Fonts.sfpro30Medium))
                 .foregroundColor(Constants.Colors.black)
-            Text(String(viewModel.moneyPresent(viewData.minPrice)))
+            Text(viewData.getMinPrice())
                 .foregroundColor(Constants.Colors.black)
                 .font(Font(Constants.Fonts.sfpro30Medium))
             Text(viewData.priceDescription)
@@ -157,7 +147,7 @@ struct MainSceneView: View {
         }
         .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
         
-        ForEach(viewData.peculiarities, id: \.self) { arr in
+        ForEach(viewData.getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30), id: \.self) { arr in
             HStack(spacing: 0) {
                 ForEach(arr, id: \.self) { word in
                     Text(word)
@@ -203,14 +193,17 @@ struct MainSceneView: View {
                             .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                    
                     Spacer()
+                    
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 6, height: 12)
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
                     
                 }
-                
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             }
             .frame(height: 38)
             .padding(10)
@@ -218,7 +211,7 @@ struct MainSceneView: View {
             
             Divider()
                 .foregroundColor(Constants.Colors.derivrdColor)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 10))
                 .background(Constants.Colors.buttonGrayBackground)
             
             Button {
@@ -226,7 +219,7 @@ struct MainSceneView: View {
             } label: {
                 HStack(alignment: .center)
                 {
-                    Image(systemName: "checkmark.square")
+                    Image("tickSquare")
                         .resizable()
                         .frame(width: 24,height: 24)
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
@@ -239,14 +232,17 @@ struct MainSceneView: View {
                             .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                    
                     Spacer()
+                    
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 6, height: 12)
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
                     
                 }
-                
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             }
             .frame(height: 38)
             .padding(10)
@@ -254,7 +250,7 @@ struct MainSceneView: View {
             
             Divider()
                 .foregroundColor(Constants.Colors.derivrdColor)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 20))
                 .background(Constants.Colors.buttonGrayBackground)
             
             Button {
@@ -262,7 +258,7 @@ struct MainSceneView: View {
             } label: {
                 HStack(alignment: .center)
                 {
-                    Image(systemName: "xmark.square")
+                    Image("closeSquare")
                         .resizable()
                         .frame(width: 24,height: 24)
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
@@ -275,13 +271,17 @@ struct MainSceneView: View {
                             .font(Font(Constants.Fonts.sfpro14Regular))
                             .foregroundColor(Constants.Colors.greyTintColor)
                     }
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                    
                     Spacer()
+                    
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 6, height: 12)
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
                     
                 }
+                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 
             }
             .frame(height: 38)
@@ -290,7 +290,7 @@ struct MainSceneView: View {
             
             Divider()
                 .foregroundColor(Constants.Colors.derivrdColor)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 20))
                 .background(Constants.Colors.buttonGrayBackground)
             
             
@@ -305,7 +305,8 @@ struct MainSceneView: View {
     
 }
 
-//
+//MARK: - Preview
+
 //
 //
 //struct MainSceneView_Previews: PreviewProvider {

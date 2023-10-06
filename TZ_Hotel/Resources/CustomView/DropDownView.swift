@@ -22,16 +22,21 @@ struct DropDownView: View
         {
             HStack
             {
-                Text("Турист \(touristStr)")
+                Text("\(touristStr) турист")
                     .font(Font(Constants.Fonts.sfpro22Regular))
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 Spacer()
                 Button {
                     // drop menu
-                    isDrop.toggle()
+                    withAnimation {
+                        isDrop.toggle()
+                    }
+                   
                     
                 } label: {
-                    Image(systemName: isDrop == true ? "chevron.down" : "chevron.up")
+                    Image(systemName: "chevron.down"  )//isDrop == true ? "chevron.down" : "chevron.up")
+                        .rotationEffect(.degrees(isDrop ? 0 : 180))
+                        .animation(.easeInOut, value: isDrop)
                         .foregroundColor(Constants.Colors.buttonBlueTint)
                     
                 }

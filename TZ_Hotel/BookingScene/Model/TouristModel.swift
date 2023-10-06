@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct TouristModel: Hashable, Equatable
+struct TouristModel: Hashable, Equatable, Identifiable
 {
     
+    var id: String = UUID().uuidString
+    var phoneNumber: String = ""
+    var email: String = ""
     var name: String = ""
     var lastName: String = ""
     var birthDate: String = ""

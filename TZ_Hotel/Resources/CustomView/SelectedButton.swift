@@ -11,7 +11,7 @@ struct SelectedButton: View {
     
     let buttonText: String
     var buttonHeight: CGFloat = 48
-    var buttonColor: Color = Color.blue
+    var buttonColor: Color = Constants.Colors.buttonBlueTint
     var buttonRadius: CGFloat = 15
     
     var action: ()->()

@@ -9,6 +9,8 @@ import Foundation
 
 struct BookingParseModel: Decodable, Identifiable
 {
+    let formatter = Formatter()
+    
     enum CodingKeys: String, CodingKey
     {
         case id
@@ -32,18 +34,18 @@ struct BookingParseModel: Decodable, Identifiable
     let id: Int
     let hotelName: String
     let hotelAdress: String
-    let hotelRating: Int
+    private let hotelRating: Int
     let ratingDescription: String
     let departure: String
     let arrivalCountry: String
     let tourStartDate: String
     let tourStopDate: String
-    let countOfNights: Int
+    private let countOfNights: Int
     let room: String
     let nutrition: String
-    let tourPrice: Int
-    let fuelChange: Int
-    let serviceChange: Int
+    private let tourPrice: Int
+    private let fuelChange: Int
+    private let serviceChange: Int
     
     init(from decoder: Decoder) throws
     {
@@ -64,4 +66,35 @@ struct BookingParseModel: Decodable, Identifiable
         fuelChange = try container.decode(Int.self, forKey: .fuelChange)
         serviceChange = try container.decode(Int.self, forKey: .serviceChange)
     }
+    
+    func getSummTour() -> String
+    {
+        let summ = tourPrice + fuelChange + serviceChange
+        return formatter.iтtegerToMoneyString(summ, with: "₽")
+    }
+    
+    func getHotelRating() -> String
+    {
+        String(hotelRating)
+    }
+    
+    func getCountOfNights() -> String
+    {
+        String(countOfNights)
+    }
+    
+    func getTourPrice() -> String
+    {
+        formatter.iтtegerToMoneyString(tourPrice, with: "₽")
+    }
+    
+    func getFuelChange() -> String
+    {
+        formatter.iтtegerToMoneyString(fuelChange, with: "₽")
+    }
+    func getServiceChange() -> String
+    {
+        formatter.iтtegerToMoneyString(serviceChange, with: "₽")
+    }
+    
 }

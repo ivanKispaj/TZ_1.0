@@ -1,5 +1,5 @@
 //
-//  RoomsViewMoedel.swift
+//  RoomsViewModel.swift
 //  TZ_Hotel
 //
 //  Created by Иван Конищев on 29.09.2023.
@@ -8,35 +8,15 @@
 import Foundation
 import UIKit
 
-class RoomsViewMoedel: ObservableObject
+class RoomsViewModel: RoomsViewModelProtocol
 {
     @Published var viewData: [RoomsPresentModel] = []
     
-    private let service: any NetworkServiceProtocol
-    
-    lazy var formater: NumberFormatter =
-    {
-        let formater = NumberFormatter()
-        formater.numberStyle = .decimal
-        formater.locale = Locale.current
-        formater.groupingSeparator = " "
-        
-        return formater
-    }()
+    internal let networkService: any NetworkServiceProtocol
     
     init(service: any NetworkServiceProtocol)
     {
-        self.service = service
-    }
-    
-    func moneyPresent(_ index: Int) -> String
-    {
-        if var money = formater.string(from: NSNumber(value: viewData[index].price))
-        {
-            money += " " + " \u{20BD}"
-            return money
-        }
-        return ""
+        self.networkService = service
     }
     
     func fetchData()
@@ -49,18 +29,16 @@ class RoomsViewMoedel: ObservableObject
         
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
-            self.service.loadDataToDecodableModel(url: url) { model, error in
+            self.networkService.loadDataToDecodableModel(url: url) { model, error in
                 guard error == nil else {return}
                 guard let roomsModel = model as? RoomsParseModel else {return}
                 for room in roomsModel.rooms
                 {
-                    let roomModel = RoomsPresentModel(id: room.id,
-                                                      name: room.name,
-                                                      price: room.price,
-                                                      priceDescription: room.priceDescription,
-                                                      peculiarities: room.peculiarities.createLineArrsString(Constants.Fonts.sfpro16Regular, 30),
-                                                      imgData: [])
+                    let roomModel = RoomsPresentModel(data: room)
                     roomsPresModel.append(roomModel)
+                    DispatchQueue.main.async {
+                        self.viewData = roomsPresModel
+                    }
                     
                     if var roomImgArr = roomsImg[room.id]
                     {
@@ -80,7 +58,7 @@ class RoomsViewMoedel: ObservableObject
                         group.enter()
                         if let url = URL(string: img)
                         {
-                            self.service.loadData(url: url) { respData, _ in
+                            self.networkService.loadData(url: url) { respData, _ in
                                 if let data = respData, let index = roomsPresModel.firstIndex(where: {$0.id == key})
                                 {
                                     if let img = UIImage(data: data)
