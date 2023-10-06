@@ -30,6 +30,7 @@ struct LastScene: View
                 {
                     Text("Ваш заказ принят в работу")
                         .font(Font(Constants.Fonts.sfpro22Regular))
+                        .foregroundStyle(Constants.Colors.black)
                 }
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 0, trailing: 10))
                 
@@ -38,6 +39,7 @@ struct LastScene: View
                     
                     Text("Подтверждение заказа №\(String(Int.random(in: 1000...60000))) может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.")
                         .multilineTextAlignment(.center)
+                        .foregroundColor(Constants.Colors.greyTintColor)
                         .font(Font(Constants.Fonts.sfpro16Light))
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                 }
