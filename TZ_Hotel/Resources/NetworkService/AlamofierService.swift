@@ -8,28 +8,23 @@
 import Alamofire
 import Foundation
 
-class AlamofierService<T: Decodable>: NetworkServiceProtocol {
-    lazy var headers: HTTPHeaders = {
-        var headers = HTTPHeaders()
-        headers["Content-Type"] = "application/json"
-        return headers
-    }()
+class AlamofierService<Model: Decodable>: NetworkServiceProtocol {
+    func loadDataToDecodableModel(endpoint: UrlPath, completion: @escaping (Model?, Error?) -> Void) {
+        guard let url = endpoint.url else { return }
+        AF.request(url, method: endpoint.method,
+                   headers: endpoint.headers)
+            .responseDecodable(of: Model.self) { response in
+                if let code = response.response?.statusCode, code >= 400 {
+                    completion(nil, ConnectError.noConnect)
+                }
 
-    func loadDataToDecodableModel(url: URL, completion: @escaping (T?, Error?) -> Void) {
-        var headers = HTTPHeaders()
-        headers["Content-Type"] = "application/json"
-        AF.request(url, headers: headers).responseDecodable(of: T.self) { response in
-            if let code = response.response?.statusCode, code >= 400 {
-                completion(nil, ConnectError.noConnect)
+                switch response.result {
+                case let .success(model):
+                    completion(model, nil)
+                case .failure:
+                    completion(nil, ConnectError.parseError)
+                }
             }
-
-            switch response.result {
-            case let .success(model):
-                completion(model, nil)
-            case .failure:
-                completion(nil, ConnectError.parseError)
-            }
-        }
     }
 
     func loadData(url: URL, completion: @escaping (Data?, Error?) -> Void) {

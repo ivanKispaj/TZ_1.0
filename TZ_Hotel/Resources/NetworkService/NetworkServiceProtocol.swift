@@ -9,6 +9,6 @@ import Foundation
 
 protocol NetworkServiceProtocol: AnyObject {
     associatedtype Model: Decodable
-    func loadDataToDecodableModel(url: URL, completion: @escaping (Model?, Error?) -> Void)
+    func loadDataToDecodableModel(endpoint: UrlPath, completion: @escaping (Model?, Error?) -> Void)
     func loadData(url: URL, completion: @escaping (Data?, Error?) -> Void)
 }

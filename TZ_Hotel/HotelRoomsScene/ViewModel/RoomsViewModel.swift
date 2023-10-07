@@ -16,14 +16,12 @@ class RoomsViewModel: RoomsViewModelProtocol {
     }
 
     func fetchData() {
-        guard let url = Constants.ApiURL.roomsSceneUrl else { return }
         let group = DispatchGroup()
         var roomsPresModel: [RoomsPresentModel] = []
         var roomsImg: [Int: [String]] = [:]
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
-            print("start group enter")
-            self.networkService.loadDataToDecodableModel(url: url) { model, error in
+            self.networkService.loadDataToDecodableModel(endpoint: .rooms) { model, error in
                 guard error == nil else { return }
                 guard let roomsModel = model as? RoomsParseModel else { return }
                 for (index, room) in roomsModel.rooms.enumerated() {
@@ -37,18 +35,15 @@ class RoomsViewModel: RoomsViewModelProtocol {
                     for img in value {
                         if let url = URL(string: img) {
                             group.enter()
-                            print("img enter")
                             self.networkService.loadData(url: url) { data, _ in
                                 if let data = data, let img = UIImage(data: data) {
                                     roomsPresModel[key].imgData.append(img)
                                 }
                                 group.leave()
-                                print("img leave")
                             }
                         }
                     }
                 }
-                print("stop group leave")
                 group.leave()
             }
         }

@@ -21,6 +21,10 @@ extension Color {
 }
 
 enum Constants {
+    static var apiHost: String {
+        return "run.mocky.io"
+    }
+
     enum Colors {
         static var textFieldForeground: Color {
             return Color(hex: 0x14142B)
@@ -92,20 +96,6 @@ enum Constants {
 
         static var buttonTitleBlack: Color {
             return Color(hex: 0x2C3035)
-        }
-    }
-
-    enum ApiURL {
-        static var hotelSceneUrl: URL? {
-            return URL(string: "https://run.mocky.io/v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3")
-        }
-
-        static var roomsSceneUrl: URL? {
-            return URL(string: "https://run.mocky.io/v3/f9a38183-6f95-43aa-853a-9c83cbb05ecd")
-        }
-
-        static var bookingSceneUrl: URL? {
-            return URL(string: "https://run.mocky.io/v3/e8868481-743f-4eb2-a0d7-2bc4012275c8")
         }
     }
 

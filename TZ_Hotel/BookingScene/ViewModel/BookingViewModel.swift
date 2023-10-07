@@ -30,10 +30,8 @@ class BookingViewModel: BookingViewModelProtocol {
     }
 
     func fetchData() {
-        guard let url = Constants.ApiURL.bookingSceneUrl else { return }
-
         DispatchQueue.global(qos: .userInteractive).async {
-            self.networkService.loadDataToDecodableModel(url: url) { response, error in
+            self.networkService.loadDataToDecodableModel(endpoint: .booking) { response, error in
                 guard error == nil else { return }
                 guard let booking = response as? BookingParseModel else { return }
                 DispatchQueue.main.async {

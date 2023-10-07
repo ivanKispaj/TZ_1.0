@@ -17,15 +17,13 @@ class MainViewModel: MainViewModelProtocol {
     }
 
     func fetchData() {
-        guard let url = Constants.ApiURL.hotelSceneUrl else { return }
-
         let group = DispatchGroup()
         var strUrls: [String]?
         var hotelPresentModel: HotelPresentModel?
 
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
-            self.networkService.loadDataToDecodableModel(url: url) { model, error in
+            self.networkService.loadDataToDecodableModel(endpoint: .hotel) { model, error in
                 guard error == nil else { return }
                 guard let parseModel = model as? HotelParseModel else { return }
                 strUrls = parseModel.imageUrls
