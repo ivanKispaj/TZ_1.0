@@ -7,16 +7,19 @@
 
 import Foundation
 
-
-enum ConnectError: String, Error{
+enum ConnectError: String, Error {
     case noConnect = "Error conn erction to server"
     case parseError = "Error parse data"
 }
+
 extension ConnectError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noConnect:
-            return NSLocalizedString("Failure connection to internet or bad server response", comment: "Inet connection failed")
+            return NSLocalizedString("""
+            Failure connection to internet or bad server response",
+            comment: "Inet connection failed
+            """, comment: "no connect to internet")
         case .parseError:
             return NSLocalizedString("Parse data response error, maybe bad server response", comment: "Parse error")
         }

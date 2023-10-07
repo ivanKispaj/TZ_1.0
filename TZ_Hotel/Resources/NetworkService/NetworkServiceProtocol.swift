@@ -7,9 +7,8 @@
 
 import Foundation
 
-protocol NetworkServiceProtocol: AnyObject
-{
-    associatedtype T: Decodable
-    func loadDataToDecodableModel(url: URL, completion: @escaping (T?,Error?) -> ())
-    func loadData(url: URL, completion: @escaping (Data?, Error?) -> ())
+protocol NetworkServiceProtocol: AnyObject {
+    associatedtype Model: Decodable
+    func loadDataToDecodableModel(url: URL, completion: @escaping (Model?, Error?) -> Void)
+    func loadData(url: URL, completion: @escaping (Data?, Error?) -> Void)
 }

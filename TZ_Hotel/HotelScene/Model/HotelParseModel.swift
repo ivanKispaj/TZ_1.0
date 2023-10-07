@@ -1,5 +1,5 @@
 //
-//  HotelModel.swift
+//  HotelParseModel.swift
 //  TZ_Hotel
 //
 //  Created by Иван Конищев on 29.09.2023.
@@ -7,10 +7,7 @@
 
 import Foundation
 
-
-
-struct HotelParseModel: Decodable
-{
+struct HotelParseModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -21,9 +18,8 @@ struct HotelParseModel: Decodable
         case ratingDescription = "rating_name"
         case imageUrl = "image_urls"
         case aboutTheHotel = "about_the_hotel"
-        
     }
-    
+
     let id: Int
     let name: String
     let adress: String
@@ -33,9 +29,8 @@ struct HotelParseModel: Decodable
     let ratingDescription: String
     let imageUrls: [String]
     let aboutTheHotel: AboutHotel
-    
-    init(from decoder: Decoder) throws
-    {
+
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
@@ -46,24 +41,21 @@ struct HotelParseModel: Decodable
         ratingDescription = try container.decode(String.self, forKey: .ratingDescription)
         imageUrls = try container.decode([String].self, forKey: .imageUrl)
         aboutTheHotel = try container.decode(AboutHotel.self, forKey: .aboutTheHotel)
-        
     }
-    
-    struct AboutHotel: Decodable
-    {
-        enum CodingKeys: String, CodingKey
-        {
-            case hotelDescription = "description"
-            case peculiarities
-        }
-        let hotelDescription: String
-        let peculiarities: [String]
-        
-        init(from decoder: Decoder) throws
-        {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            hotelDescription = try container.decode(String.self, forKey: .hotelDescription)
-            peculiarities = try container.decode([String].self, forKey: .peculiarities)
-        }
+}
+
+struct AboutHotel: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case hotelDescription = "description"
+        case peculiarities
+    }
+
+    let hotelDescription: String
+    let peculiarities: [String]
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        hotelDescription = try container.decode(String.self, forKey: .hotelDescription)
+        peculiarities = try container.decode([String].self, forKey: .peculiarities)
     }
 }

@@ -7,23 +7,20 @@
 
 import Foundation
 
-struct RoomsParseModel: Decodable
-{
-    let rooms: [Rooms]
+struct RoomsParseModel: Decodable {
+    let rooms: [Room]
 }
 
-struct Rooms: Decodable
-{
-    enum CodingKeys: String, CodingKey
-    {
+struct Room: Decodable {
+    enum CodingKeys: String, CodingKey {
         case id
         case name
         case price
         case priceDescription = "price_per"
         case peculiarities
         case imgUrl = "image_urls"
-        
     }
+
     let id: Int
     let name: String
     let price: Int

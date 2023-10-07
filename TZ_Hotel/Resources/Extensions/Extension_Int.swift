@@ -7,8 +7,8 @@
 
 import Foundation
 
-//extension Int
-//{
+// extension Int
+// {
 //     var toMoneyString: String
 //    {
 //        var formater: NumberFormatter =
@@ -17,14 +17,14 @@ import Foundation
 //            formater.numberStyle = .decimal
 //            formater.locale = Locale.current
 //            formater.groupingSeparator = " "
-//            
+//
 //            return formater
 //        }()
-//        
+//
 //        if let retString = formater.string(from: NSNumber(value: self))
 //        {
 //            return retString + " " + "₽"
 //        }
 //        return ""
 //    }
-//}
+// }

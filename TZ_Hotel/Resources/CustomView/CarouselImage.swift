@@ -1,5 +1,5 @@
 //
-//  Carousel.swift
+//  CarouselImage.swift
 //  TZ_Hotel
 //
 //  Created by Иван Конищев on 30.09.2023.
@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct CarouselImage: View
-{
+struct CarouselImage: View {
     var item: [UIImage]
     @State var selected = 0
-    
-    var body: some View
-    {
-        TabView (selection: $selected){
-            ForEach(0..<item.count, id: \.self) { imgIndex in
+
+    var body: some View {
+        TabView(selection: $selected) {
+            ForEach(0 ..< item.count, id: \.self) { imgIndex in
                 Image(uiImage: item[imgIndex])
                     .resizable()
                     .frame(height: 257)
@@ -30,20 +28,16 @@ struct CarouselImage: View
         }
         .frame(height: 257)
     }
-    
-    @ViewBuilder private func customTabView() -> some View
-    {
+
+    @ViewBuilder private func customTabView() -> some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                
-                ForEach(0..<item.count, id: \.self) { index in
-                    
+                ForEach(0 ..< item.count, id: \.self) { index in
+
                     Circle()
-                        .fill(Color.black.opacity(getCircleOpacityFromIndex(selected, index)))//selected == index ? Color.black : Color.black.opacity(0.22))
-                        .frame(width: 7,height: 7)
+                        .fill(Color.black.opacity(getCircleOpacityFromIndex(selected, index)))
+                        .frame(width: 7, height: 7)
                         .padding(EdgeInsets(top: 0, leading: 2.5, bottom: 0, trailing: 2.5))
-                    
-                    
                 }
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -53,21 +47,18 @@ struct CarouselImage: View
         .cornerRadius(5)
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
     }
-          
-    private func getCircleOpacityFromIndex(_ selectedIndex: Int,  _ curentIndex: Int) -> Double
-    {
-        if curentIndex == selectedIndex
-        {
+
+    private func getCircleOpacityFromIndex(_ selectedIndex: Int, _ curentIndex: Int) -> Double {
+        if curentIndex == selectedIndex {
             return 1
         }
-        
+
         let startOpacity = 0.22
-        
-        if curentIndex < selectedIndex
-        {
-            return (startOpacity / (Double(selectedIndex - curentIndex)))
+
+        if curentIndex < selectedIndex {
+            return startOpacity / Double(selectedIndex - curentIndex)
         }
-       
-        return startOpacity / (Double(curentIndex - selectedIndex))
+
+        return startOpacity / Double(curentIndex - selectedIndex)
     }
 }

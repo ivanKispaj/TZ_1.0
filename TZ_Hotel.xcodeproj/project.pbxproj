@@ -17,7 +17,7 @@
 		802D386D2ACFF1900075DEFE /* RoomsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D386C2ACFF1900075DEFE /* RoomsViewModelProtocol.swift */; };
 		802D386F2ACFF1B40075DEFE /* MainViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D386E2ACFF1B40075DEFE /* MainViewModelProtocol.swift */; };
 		802D38712ACFF1E90075DEFE /* BookingViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */; };
-		8086F7182AC3D9FA00346571 /* TZ_HotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZ_HotelApp.swift */; };
+		8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZHotelApp.swift */; };
 		8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7192AC3D9FA00346571 /* MainSceneView.swift */; };
 		8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71B2AC3D9FC00346571 /* Assets.xcassets */; };
 		8086F71F2AC3D9FC00346571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71E2AC3D9FC00346571 /* Preview Assets.xcassets */; };
@@ -63,7 +63,7 @@
 		802D386E2ACFF1B40075DEFE /* MainViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelProtocol.swift; sourceTree = "<group>"; };
 		802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModelProtocol.swift; sourceTree = "<group>"; };
 		8086F7142AC3D9FA00346571 /* TZ_Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZ_Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8086F7172AC3D9FA00346571 /* TZ_HotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZ_HotelApp.swift; sourceTree = "<group>"; };
+		8086F7172AC3D9FA00346571 /* TZHotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZHotelApp.swift; sourceTree = "<group>"; };
 		8086F7192AC3D9FA00346571 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
 		8086F71B2AC3D9FC00346571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8086F71E2AC3D9FC00346571 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 				8086F7582AC719AF00346571 /* HotelRoomsScene */,
 				8086F7282AC3DFEC00346571 /* Coordinator */,
 				8086F72B2AC3E4FA00346571 /* Resources */,
-				8086F7172AC3D9FA00346571 /* TZ_HotelApp.swift */,
+				8086F7172AC3D9FA00346571 /* TZHotelApp.swift */,
 				8086F71D2AC3D9FC00346571 /* Preview Content */,
 			);
 			path = TZ_Hotel;
@@ -373,6 +373,7 @@
 				8086F7102AC3D9FA00346571 /* Sources */,
 				8086F7112AC3D9FA00346571 /* Frameworks */,
 				8086F7122AC3D9FA00346571 /* Resources */,
+				80DB0F902AD0827F003C6AB8 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -436,6 +437,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80DB0F902AD0827F003C6AB8 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nif which swiftlint >/dev/null; then\nswiftlint\nelse echo \"warning: SwiftLint not installed, download from https: //github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8086F7102AC3D9FA00346571 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -455,7 +477,7 @@
 				802D38662ACFD4160075DEFE /* Formatter.swift in Sources */,
 				8086F7432AC68B5F00346571 /* ConnectError.swift in Sources */,
 				8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */,
-				8086F7182AC3D9FA00346571 /* TZ_HotelApp.swift in Sources */,
+				8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */,
 				8086F7452AC68C5600346571 /* NetworkServiceProtocol.swift in Sources */,
 				80D1D0742ACA7DD500D36982 /* CustTextField.swift in Sources */,
 				8086F7612AC71A5900346571 /* RoomsSceneView.swift in Sources */,
@@ -610,6 +632,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TZ_Hotel/Preview Content\"";
 				DEVELOPMENT_TEAM = JJYZW38GT4;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TZ-Hotel-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TZ_Hotel;
@@ -643,6 +666,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TZ_Hotel/Preview Content\"";
 				DEVELOPMENT_TEAM = JJYZW38GT4;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TZ-Hotel-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TZ_Hotel;

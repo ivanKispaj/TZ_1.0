@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct SelectedButton: View {
-    
     let buttonText: String
     var buttonHeight: CGFloat = 48
     var buttonColor: Color = Constants.Colors.buttonBlueTint
     var buttonRadius: CGFloat = 15
-    
-    var action: ()->()
-    var body: some View
-    {
-        HStack(alignment: .center)
-        {
-            
+
+    var action: () -> Void
+    var body: some View {
+        HStack(alignment: .center) {
             Button {
-                return action()
+                action()
             } label: {
                 Spacer()
                 Text(buttonText)
@@ -33,7 +29,6 @@ struct SelectedButton: View {
             .background(buttonColor)
             .cornerRadius(buttonRadius)
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-            
         }
     }
 }

@@ -7,12 +7,10 @@
 
 import Foundation
 
-struct BookingParseModel: Decodable, Identifiable
-{
+struct BookingParseModel: Decodable, Identifiable {
     let formatter = Formatter()
-    
-    enum CodingKeys: String, CodingKey
-    {
+
+    enum CodingKeys: String, CodingKey {
         case id
         case hotelName = "hotel_name"
         case hotelAdress = "hotel_adress"
@@ -28,9 +26,8 @@ struct BookingParseModel: Decodable, Identifiable
         case tourPrice = "tour_price"
         case fuelChange = "fuel_charge"
         case serviceChange = "service_charge"
-        
-        
     }
+
     let id: Int
     let hotelName: String
     let hotelAdress: String
@@ -46,9 +43,8 @@ struct BookingParseModel: Decodable, Identifiable
     private let tourPrice: Int
     private let fuelChange: Int
     private let serviceChange: Int
-    
-    init(from decoder: Decoder) throws
-    {
+
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         hotelName = try container.decode(String.self, forKey: .hotelName)
@@ -66,35 +62,29 @@ struct BookingParseModel: Decodable, Identifiable
         fuelChange = try container.decode(Int.self, forKey: .fuelChange)
         serviceChange = try container.decode(Int.self, forKey: .serviceChange)
     }
-    
-    func getSummTour() -> String
-    {
+
+    func getSummTour() -> String {
         let summ = tourPrice + fuelChange + serviceChange
         return formatter.iтtegerToMoneyString(summ, with: "₽")
     }
-    
-    func getHotelRating() -> String
-    {
+
+    func getHotelRating() -> String {
         String(hotelRating)
     }
-    
-    func getCountOfNights() -> String
-    {
+
+    func getCountOfNights() -> String {
         String(countOfNights)
     }
-    
-    func getTourPrice() -> String
-    {
+
+    func getTourPrice() -> String {
         formatter.iтtegerToMoneyString(tourPrice, with: "₽")
     }
-    
-    func getFuelChange() -> String
-    {
+
+    func getFuelChange() -> String {
         formatter.iтtegerToMoneyString(fuelChange, with: "₽")
     }
-    func getServiceChange() -> String
-    {
+
+    func getServiceChange() -> String {
         formatter.iтtegerToMoneyString(serviceChange, with: "₽")
     }
-    
 }

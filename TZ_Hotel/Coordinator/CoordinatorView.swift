@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct CoordinatorView: View
-{
+struct CoordinatorView: View {
     @StateObject private var coordinator = Coordinator()
-    var body: some View
-    {
+    var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.build(page: .hotel)
                 .navigationDestination(for: Page.self) { page in
@@ -20,8 +18,5 @@ struct CoordinatorView: View
         }
         .background(Constants.Colors.white)
         .environmentObject(coordinator)
-        
     }
 }
-
-

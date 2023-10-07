@@ -8,79 +8,87 @@
 import Foundation
 import UIKit
 
-class RoomsViewModel: RoomsViewModelProtocol
-{
+class RoomsViewModel: RoomsViewModelProtocol {
     @Published var viewData: [RoomsPresentModel] = []
-    
-    internal let networkService: any NetworkServiceProtocol
-    
-    init(service: any NetworkServiceProtocol)
-    {
-        self.networkService = service
+    let networkService: any NetworkServiceProtocol
+    init(service: any NetworkServiceProtocol) {
+        networkService = service
     }
-    
-    func fetchData()
-    {
-        guard let url = Constants.ApiURL.roomsSceneUrl else {return}
+
+    func fetchData() {
+        guard let url = Constants.ApiURL.roomsSceneUrl else { return }
         let group = DispatchGroup()
-        
         var roomsPresModel: [RoomsPresentModel] = []
-        var roomsImg: [Int :[String]] = [:]
-        
+        var roomsImg: [Int: [String]] = [:]
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
+            print("start group enter")
             self.networkService.loadDataToDecodableModel(url: url) { model, error in
-                guard error == nil else {return}
-                guard let roomsModel = model as? RoomsParseModel else {return}
-                for room in roomsModel.rooms
-                {
-                    let roomModel = RoomsPresentModel(data: room)
-                    roomsPresModel.append(roomModel)
-                    DispatchQueue.main.async {
-                        self.viewData = roomsPresModel
-                    }
-                    
-                    if var roomImgArr = roomsImg[room.id]
-                    {
-                        roomImgArr += room.imgUrl
-                        roomsImg[room.id] = roomImgArr
-                    } else
-                    {
-                        roomsImg[room.id] = room.imgUrl
-                    }
-                    
+                guard error == nil else { return }
+                guard let roomsModel = model as? RoomsParseModel else { return }
+                for (index, room) in roomsModel.rooms.enumerated() {
+                    roomsPresModel.append(RoomsPresentModel(data: room))
+                    roomsImg[index] = room.imgUrl
                 }
-                group.leave()
-                for (key, value) in roomsImg
-                {
-                    for img in value
-                    {
-                        group.enter()
-                        if let url = URL(string: img)
-                        {
-                            self.networkService.loadData(url: url) { respData, _ in
-                                if let data = respData, let index = roomsPresModel.firstIndex(where: {$0.id == key})
-                                {
-                                    if let img = UIImage(data: data)
-                                    {
-                                        roomsPresModel[index].imgData.append(img)
-                                    }
-                                    
-                                    group.leave()
+                DispatchQueue.main.async {
+                    self.viewData = roomsPresModel
+                }
+                for (key, value) in roomsImg {
+                    for img in value {
+                        if let url = URL(string: img) {
+                            group.enter()
+                            print("img enter")
+                            self.networkService.loadData(url: url) { data, _ in
+                                if let data = data, let img = UIImage(data: data) {
+                                    roomsPresModel[key].imgData.append(img)
                                 }
+                                group.leave()
+                                print("img leave")
                             }
                         }
                     }
-                    
                 }
-                
-                group.notify(queue: DispatchQueue.main) { [weak self] in
-                    guard let self = self else {return}
-                    DispatchQueue.main.async {
-                        self.viewData = roomsPresModel
-                    }
-                }
+                print("stop group leave")
+                group.leave()
+            }
+        }
+        group.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.viewData = roomsPresModel
             }
         }
     }
+//
+//    private func loadImages(_ roomsImg: [Int: [String]]) {
+//        let groupes = DispatchGroup()
+//        var images: [Int: [UIImage]] = [:]
+//        DispatchQueue.global(qos: .userInteractive).async(group: groupes) {
+//
+//            for (key, value) in roomsImg {
+//                groupes.enter()
+//                for img in value {
+//                    if let url = URL(string: img) {
+//                        self.networkService.loadData(url: url) { respData, _ in
+//                            if let data = respData {
+//                                if let img = UIImage(data: data) {
+//                                    images[key]?.append(img)
+//                                }
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        groupes.notify(queue: DispatchQueue.main) { [weak self] in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                for (index, imgData) in images {
+//                    self.viewData[index].imgData = imgData
+//                }
+//            }
+//        }
+//    }
 }

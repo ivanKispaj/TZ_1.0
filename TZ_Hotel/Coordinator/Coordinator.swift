@@ -7,38 +7,31 @@
 
 import SwiftUI
 
-enum Page: Hashable
-{
+enum Page: Hashable {
     case hotel
     case rooms(String)
     case booking
     case lastScene
 }
 
-class Coordinator: ObservableObject
-{
+class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
-    
-    func push(_ page: Page)
-    {
+
+    func push(_ page: Page) {
         path.append(page)
     }
-    
-    func pop()
-    {
+
+    func pop() {
         path.removeLast()
     }
-    
-    func poptoRoot()
-    {
+
+    func poptoRoot() {
         path.removeLast(path.count)
     }
-    
+
     @ViewBuilder
-    func build(page: Page) -> some View
-    {
-        switch page
-        {
+    func build(page: Page) -> some View {
+        switch page {
         case .hotel:
             MainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>()))
                 .navigationBarTitleDisplayMode(.inline)
@@ -49,7 +42,7 @@ class Coordinator: ObservableObject
                             .foregroundColor(Constants.Colors.black)
                     }
                 }
-        case .rooms (let title):
+        case let .rooms(title):
             RoomsSceneView(viewModel: RoomsViewModel(service: AlamofierService<RoomsParseModel>()))
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
@@ -65,7 +58,7 @@ class Coordinator: ObservableObject
                         } label: {
                             Image(systemName: "chevron.left")
                                 .resizable()
-                                .frame(width: 6,height: 12)
+                                .frame(width: 6, height: 12)
                                 .foregroundColor(Constants.Colors.black)
                                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
                         }
@@ -87,7 +80,7 @@ class Coordinator: ObservableObject
                         } label: {
                             Image(systemName: "chevron.left")
                                 .resizable()
-                                .frame(width: 6,height: 12)
+                                .frame(width: 6, height: 12)
                                 .foregroundColor(Constants.Colors.black)
                                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
                         }
@@ -99,11 +92,10 @@ class Coordinator: ObservableObject
                 .navigationBarBackButtonHidden()
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        VStack{
+                        VStack {
                             Text("Заказ оплачен")
                                 .font(Font(Constants.Fonts.headline1))
                                 .foregroundColor(Constants.Colors.black)
-                            
                         }
                     }
                     ToolbarItem(placement: .topBarLeading) {
@@ -112,7 +104,7 @@ class Coordinator: ObservableObject
                         } label: {
                             Image(systemName: "chevron.left")
                                 .resizable()
-                                .frame(width: 6,height: 12)
+                                .frame(width: 6, height: 12)
                                 .foregroundColor(Constants.Colors.black)
                                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
                         }

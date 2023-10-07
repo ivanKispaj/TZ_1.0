@@ -7,92 +7,73 @@
 
 import Foundation
 
-class Formatter
-{
-    lazy private var wordInteger: [String] = ["Первый", "Второй", "Третий", "Четвертый", "Пятый", "Шестой", "Седьиой",
-                                              "Восьмой", "Девятый", "Десятый", "Одинадцатый", "Двенадцатый", "Тринадцатый",
-                                              "Четырнадцатый", "Пятнадцатый", "Шестнадцатый", "Семнадцатый", "Восемнадцатый",
+class Formatter {
+    private lazy var wordInteger: [String] = ["Первый", "Второй", "Третий", "Четвертый", "Пятый",
+                                              "Шестой", "Седьиой", "Восьмой", "Девятый",
+                                              "Десятый", "Одинадцатый", "Двенадцатый",
+                                              "Тринадцатый", "Четырнадцатый", "Пятнадцатый",
+                                              "Шестнадцатый", "Семнадцатый", "Восемнадцатый",
                                               "Девятнадцатый", "Двадцатый"]
-    lazy private var formater: NumberFormatter =
-    {
+    private lazy var formater: NumberFormatter = {
         let formater = NumberFormatter()
         formater.locale = Locale(identifier: "ru_RU")
         formater.groupingSeparator = " "
         return formater
     }()
-    
-    lazy private var phoneMask: String =
-    {
-        return  "+7(***)***-**-**"
-        
-    }()
-    
+
+    private lazy var phoneMask: String = "+7(***)***-**-**"
+
     private var inputNumber: String = ""
-    
-    func integerToWord(_ integer: Int) -> String
-    {
-        if integer < wordInteger.count
-        {
+
+    func integerToWord(_ integer: Int) -> String {
+        if integer < wordInteger.count {
             return wordInteger[integer]
         }
         return "..."
     }
-    
-    func iтtegerToMoneyString(_ num: Int, with sign: String) -> String
-    {
+
+    func iтtegerToMoneyString(_ num: Int, with sign: String) -> String {
         formater.numberStyle = .decimal
-        
-        if var money = formater.string(from: NSNumber(value: num))
-        {
+
+        if var money = formater.string(from: NSNumber(value: num)) {
             money += " " + sign
             return money
         }
         return ""
     }
-    
-    func formattesPhone(value: String?) -> String?
-    {
-        guard var number = value else { return phoneMask}
-        
-        if (number.count > phoneMask.count)
-        {
-            if (inputNumber.count < 10)
-            {
+
+    func formattesPhone(value: String?) -> String? {
+        guard var number = value else { return phoneMask }
+
+        if number.count > phoneMask.count {
+            if inputNumber.count < 10 {
                 let val = number.removeLast()
-                if val.isNumber
-                {
+                if val.isNumber {
                     inputNumber.append(val)
                 }
-                
             }
-            
-        } else if number.count < phoneMask.count
-        {
-            if(inputNumber.count > 0)
-            {
+
+        } else if number.count < phoneMask.count {
+            if inputNumber.count > 0 {
                 inputNumber.removeLast()
-                
             }
         }
-        
+
         let mask = phoneMask
         var result = ""
         var index = inputNumber.startIndex
-        for ch in mask where index < mask.endIndex {
-            if ch == "*" {
-                if inputNumber.indices.contains(index)
-                {
+        for char in mask where index < mask.endIndex {
+            if char == "*" {
+                if inputNumber.indices.contains(index) {
                     result.append(inputNumber[index])
                     index = number.index(after: index)
-                } else
-                {
-                    result.append(ch)
+                } else {
+                    result.append(char)
                 }
             } else {
-                result.append(ch)
+                result.append(char)
             }
         }
         return result
     }
-    
 }

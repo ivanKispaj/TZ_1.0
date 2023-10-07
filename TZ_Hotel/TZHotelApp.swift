@@ -1,5 +1,5 @@
 //
-//  TZ_HotelApp.swift
+//  TZHotelApp.swift
 //  TZ_Hotel
 //
 //  Created by Иван Конищев on 27.09.2023.
@@ -8,12 +8,10 @@
 import SwiftUI
 
 @main
-struct TZ_HotelApp: App {
-    
+struct TZHotelApp: App {
     var body: some Scene {
         WindowGroup {
             CoordinatorView()
         }
     }
 }
-

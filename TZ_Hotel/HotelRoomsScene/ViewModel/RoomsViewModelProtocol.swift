@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-protocol RoomsViewModelProtocol: ObservableObject, ViewModelProtocol
-{
+protocol RoomsViewModelProtocol: ObservableObject, ViewModelProtocol {
     var viewData: [RoomsPresentModel] { get set }
 }

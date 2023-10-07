@@ -5,13 +5,11 @@
 //  Created by Иван Конищев on 04.10.2023.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
-extension Font
-{
-    init(_ uiFont: UIFont)
-    {
+extension Font {
+    init(_ uiFont: UIFont) {
         self = Font(uiFont as CTFont)
     }
 }

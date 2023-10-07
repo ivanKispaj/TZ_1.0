@@ -10,14 +10,14 @@ import SwiftUI
 struct CustTextField: View {
     var placeholder: String
     @State var wihtDataPicker: Bool = false
-    
+
     @Binding var isValidData: Bool
     @Binding var value: String
     @State var onTapped: Bool = false
-    @State var selectedDate: Date = Date()
+    @State var selectedDate: Date = .init()
     @State var dataPickerShow: Bool = false
     @FocusState var isFocused: Bool
-    
+
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru-RU")
@@ -25,50 +25,39 @@ struct CustTextField: View {
         formatter.dateStyle = .medium
         return formatter
     }()
-    
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 0)
-        {
-            HStack
-            {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
                 Text(placeholder)
                     .foregroundColor(Constants.Colors.textFieldPlace)
                     .font(onTapped ? Font(Constants.Fonts.callout2) : Font(Constants.Fonts.playsholder17))
                 Spacer()
-                
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-            
+
             /// Скрыть до нажатия на плейсхолдер
-            if onTapped && !wihtDataPicker
-            {
-                HStack
-                {
+            if onTapped && !wihtDataPicker {
+                HStack {
                     TextField("", text: $value)
                         .foregroundColor(Constants.Colors.textFieldForeground)
                         .font(Font(Constants.Fonts.sfpro16Light))
                         .focused($isFocused)
                     Spacer()
-                    
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
-                
-            } else if onTapped && wihtDataPicker
-            {
-                HStack
-                {
+
+            } else if onTapped && wihtDataPicker {
+                HStack {
                     Text(value)
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                         .foregroundColor(Constants.Colors.black)
-                    
                 }
-                if dataPickerShow && wihtDataPicker
-                {
-                    HStack
-                    {
+                if dataPickerShow && wihtDataPicker {
+                    HStack {
                         DatePicker("", selection: $selectedDate, displayedComponents: .date)
                             .colorMultiply(Constants.Colors.textFieldForeground)
-                            .environment(\.locale, Locale.init(identifier: "ru-RU"))
+                            .environment(\.locale, Locale(identifier: "ru-RU"))
                             .datePickerStyle(.wheel)
                             .background(Constants.Colors.textFieldBackground)
                             .onChange(of: selectedDate) { newValue in
@@ -84,15 +73,15 @@ struct CustTextField: View {
         }
         .frame(height: dataPickerShow ? 100 : 52)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        .background(isValidData || (!isValidData && value.count > 0) ? Constants.Colors.textFieldBackground : Constants.Colors.textFieldWarning)
+        .background(isValidData || (!isValidData && value.count > 0) ?
+            Constants.Colors.textFieldBackground :
+            Constants.Colors.textFieldWarning)
         .cornerRadius(10)
         .onTapGesture {
             onTapped = true
             isFocused.toggle()
-            if wihtDataPicker
-            {
+            if wihtDataPicker {
                 dataPickerShow.toggle()
-                
             }
         }
     }

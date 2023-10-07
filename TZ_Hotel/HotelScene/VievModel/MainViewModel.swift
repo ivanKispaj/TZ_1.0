@@ -7,41 +7,35 @@
 
 import UIKit
 
-class MainViewModel: MainViewModelProtocol
-{
+class MainViewModel: MainViewModelProtocol {
     @Published var viewData: HotelPresentModel?
-    
-    internal let networkService: any NetworkServiceProtocol
-    
-    init(service: any NetworkServiceProtocol)
-    {
-        self.networkService = service
+
+    let networkService: any NetworkServiceProtocol
+
+    init(service: any NetworkServiceProtocol) {
+        networkService = service
     }
-    
-    func fetchData()
-    {
-        guard let url = Constants.ApiURL.hotelSceneUrl else {return}
-        
+
+    func fetchData() {
+        guard let url = Constants.ApiURL.hotelSceneUrl else { return }
+
         let group = DispatchGroup()
         var strUrls: [String]?
         var hotelPresentModel: HotelPresentModel?
-        
+
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
             group.enter()
             self.networkService.loadDataToDecodableModel(url: url) { model, error in
-                guard error == nil else {return}
-                guard let parseModel = model as? HotelParseModel else {return}
+                guard error == nil else { return }
+                guard let parseModel = model as? HotelParseModel else { return }
                 strUrls = parseModel.imageUrls
                 hotelPresentModel = HotelPresentModel(data: parseModel)
                 DispatchQueue.main.async {
                     self.viewData = hotelPresentModel
                 }
-                if let imgUrls = strUrls
-                {
-                    for strUrl in imgUrls
-                    {
-                        if let url = URL(string: strUrl)
-                        {
+                if let imgUrls = strUrls {
+                    for strUrl in imgUrls {
+                        if let url = URL(string: strUrl) {
                             group.enter()
                             self.networkService.loadData(url: url) { respData, _ in
                                 if let data = respData, let img = UIImage(data: data) {
@@ -55,14 +49,13 @@ class MainViewModel: MainViewModelProtocol
                 group.leave()
             }
         }
-        
+
         group.notify(queue: DispatchQueue.main) { [weak self] in
-            guard let self = self  else {return}
-            
+            guard let self = self else { return }
+
             DispatchQueue.main.async {
                 self.viewData = hotelPresentModel
             }
         }
     }
-    
 }

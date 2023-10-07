@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-protocol MainViewModelProtocol: ObservableObject, ViewModelProtocol
-{
+protocol MainViewModelProtocol: ObservableObject, ViewModelProtocol {
     var viewData: HotelPresentModel? { get set }
 }

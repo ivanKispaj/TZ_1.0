@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol ViewModelProtocol: ObservableObject
-{
+protocol ViewModelProtocol: ObservableObject {
     var networkService: any NetworkServiceProtocol { get }
     func fetchData()
 }

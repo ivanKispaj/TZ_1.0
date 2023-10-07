@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct TouristModel: Hashable, Equatable, Identifiable
-{
-    
+struct TouristModel: Hashable, Equatable, Identifiable {
     var id: String = UUID().uuidString
     var phoneNumber: String = ""
     var email: String = ""
