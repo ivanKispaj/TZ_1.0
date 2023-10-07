@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+struct FieldsValidationState {
+    var isValidNumber: Bool = true
+    var isValidEmail: Bool = true
+    var isValidTouristFields: Bool = true
+    func isValidFields() -> Bool {
+        isValidNumber && isValidEmail && isValidTouristFields
+    }
+}
 
 class BookingViewModel: BookingViewModelProtocol {
     @Published var viewData: BookingParseModel?
     @Published var tourists: [TouristModel] = [TouristModel()]
-    @Published var validState: Int
+    @Published var validState = FieldsValidationState()
 
     let networkService: any NetworkServiceProtocol
 
@@ -19,7 +27,6 @@ class BookingViewModel: BookingViewModelProtocol {
     init(viewData _: BookingParseModel? = nil, service: any NetworkServiceProtocol) {
         networkService = service
         textFieldVAlidator = TextFieldValidator()
-        validState = textFieldVAlidator.getValidState()
     }
 
     func fetchData() {
@@ -37,21 +44,16 @@ class BookingViewModel: BookingViewModelProtocol {
     }
 
     func verifyInputData(phone: String, email: String) -> Bool {
-        if !textFieldVAlidator.validatePhoneAndEmailFields(phone, email, comletion: { [weak self] state in
+        validState.isValidNumber = textFieldVAlidator.validatePhoneNumber(phone)
+        validState.isValidEmail = textFieldVAlidator.validateEmail(email)
+        textFieldVAlidator.validateTouristFields(tourists) { [weak self] index, state in
             guard let self = self else { return }
-            self.validState = state
-        }) {
-            return false
+            if let index = index {
+                self.tourists[index].isValidData = state
+                self.validState.isValidTouristFields = state
+            }
         }
-
-        var isValidate = true
-
-        textFieldVAlidator.validateTouristFields(tourists) { [weak self] index in
-            guard let self = self else { return }
-            self.tourists[index].isValidData = false
-            isValidate = false
-        }
-        return isValidate
+        return validState.isValidFields()
     }
 
     func formatedPhoneNumber(_ value: String?) -> String? {

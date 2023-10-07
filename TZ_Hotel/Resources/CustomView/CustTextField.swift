@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CustTextField: View {
     var placeholder: String
-    @State var wihtDataPicker: Bool = false
-
-    @Binding var isValidData: Bool
     @Binding var value: String
+    var keyboardType: UIKeyboardType = .default
+    var wihtDataPicker: Bool = false
     @State var onTapped: Bool = false
-    @State var selectedDate: Date = .init()
     @State var dataPickerShow: Bool = false
+    var changed: (String) -> Void = { _ in }
+    @State var selectedDate: Date = .init()
     @FocusState var isFocused: Bool
 
     private let dateFormatter: DateFormatter = {
@@ -30,21 +30,34 @@ struct CustTextField: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Text(placeholder)
-                    .foregroundColor(Constants.Colors.textFieldPlace)
-                    .font(onTapped ? Font(Constants.Fonts.callout2) : Font(Constants.Fonts.playsholder17))
+                    .fontWithForeground(font: onTapped ?
+                        Font(Constants.Fonts.callout2) :
+                        Font(Constants.Fonts.playsholder17),
+                        color: Constants.Colors.textFieldPlace)
                 Spacer()
             }
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
 
             /// Скрыть до нажатия на плейсхолдер
             if onTapped && !wihtDataPicker {
                 HStack {
                     TextField("", text: $value)
-                        .foregroundColor(Constants.Colors.textFieldForeground)
-                        .font(Font(Constants.Fonts.sfpro16Light))
+                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light),
+                                            color: Constants.Colors.textFieldForeground)
                         .focused($isFocused)
+                        .onSubmit {
+                            if value.isEmpty {
+                                onTapped.toggle()
+                            }
+                        }
+                        .keyboardType(keyboardType)
+                        .onChange(of: value) { newValue in
+                            changed(newValue)
+                        }
+
                     Spacer()
                 }
+
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
 
             } else if onTapped && wihtDataPicker {
@@ -73,9 +86,6 @@ struct CustTextField: View {
         }
         .frame(height: dataPickerShow ? 100 : 52)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        .background(isValidData || (!isValidData && value.count > 0) ?
-            Constants.Colors.textFieldBackground :
-            Constants.Colors.textFieldWarning)
         .cornerRadius(10)
         .onTapGesture {
             onTapped = true

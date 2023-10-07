@@ -8,95 +8,61 @@
 import Foundation
 
 class TextFieldValidator {
-    private var validState: Int = 0
+    init() {}
 
-    var none: Int {
-        return 0
-    }
-
-    var numberValid: Int {
-        return 4
-    }
-
-    var emailValid: Int {
-        return 8
-    }
-
-    var touristFieldsValid: Int {
-        return 16
-    }
-
-    init() {
-        validState = numberValid | emailValid | touristFieldsValid
-    }
-
-    func getValidState() -> Int {
-        validState
-    }
-
-    func validateTouristFields(_ tourists: [TouristModel], completion: @escaping (Int) -> Void) {
+    func validateTouristFields(_ tourists: [TouristModel], completion: @escaping (Int?, Bool) -> Void) {
+        var state = true
         for (index, tourist) in tourists.enumerated() {
             if tourist.name.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
             if tourist.lastName.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
             if tourist.birthDate.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
             if tourist.nationality.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
 
             if tourist.passportCode.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
             if tourist.passportValidityPeriod.count == 0 {
-                completion(index)
+                state = false
+                completion(index, state)
                 continue
             }
+            completion(index, state)
         }
     }
 
-    func validatePhoneAndEmailFields(_ phone: String, _ email: String, comletion: @escaping (Int) -> Void) -> Bool {
-        validatePhoneNumber(phone)
-        validateEmail(email)
-        comletion(validState)
-        if validState & (numberValid | emailValid) != (numberValid | emailValid) {
-            return false
-        }
-        return true
-    }
-
-    private func validateEmail(_ email: String) {
+    func validateEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
         let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
 
         if emailPred.evaluate(with: email) {
-            validState = validState | emailValid
-        } else {
-            if validState & emailValid != 0 {
-                validState = validState ^ emailValid
-            }
+            return true
         }
+        return false
     }
 
-    private func validatePhoneNumber(_ phone: String) {
+    func validatePhoneNumber(_ phone: String) -> Bool {
         if phone.isEmpty || phone.contains(where: { $0 == "*" }) {
-            if validState & numberValid != 0 {
-                validState = validState ^ numberValid
-            }
-        } else {
-            if validState & numberValid == 0 {
-                validState = validState | numberValid
-            }
+            return false
         }
+        return true
     }
 }

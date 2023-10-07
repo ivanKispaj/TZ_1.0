@@ -10,7 +10,7 @@ import SwiftUI
 protocol BookingViewModelProtocol: ObservableObject, ViewModelProtocol {
     var viewData: BookingParseModel? { get set }
     var tourists: [TouristModel] { get set }
-    var validState: Int { get set }
+    var validState: FieldsValidationState { get set }
     var textFieldVAlidator: TextFieldValidator { get }
 
     func verifyInputData(phone: String, email: String) -> Bool

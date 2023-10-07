@@ -59,36 +59,4 @@ class RoomsViewModel: RoomsViewModelProtocol {
             }
         }
     }
-//
-//    private func loadImages(_ roomsImg: [Int: [String]]) {
-//        let groupes = DispatchGroup()
-//        var images: [Int: [UIImage]] = [:]
-//        DispatchQueue.global(qos: .userInteractive).async(group: groupes) {
-//
-//            for (key, value) in roomsImg {
-//                groupes.enter()
-//                for img in value {
-//                    if let url = URL(string: img) {
-//                        self.networkService.loadData(url: url) { respData, _ in
-//                            if let data = respData {
-//                                if let img = UIImage(data: data) {
-//                                    images[key]?.append(img)
-//                                }
-//
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        groupes.notify(queue: DispatchQueue.main) { [weak self] in
-//            guard let self = self else { return }
-//            DispatchQueue.main.async {
-//                for (index, imgData) in images {
-//                    self.viewData[index].imgData = imgData
-//                }
-//            }
-//        }
-//    }
 }
