@@ -155,12 +155,15 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             }
             .background(self.viewModel.validState.isValidNumber ? Constants.Colors.textFieldBackground :
                 Constants.Colors.textFieldWarning)
+            .cornerRadius(10)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+
             CustTextField(placeholder: "Почта", value: $email, keyboardType: .emailAddress) { newValue in
                 _ = self.viewModel.verifyInputData(phone: phoneNumber, email: newValue)
             }
             .background(self.viewModel.validState.isValidEmail ? Constants.Colors.textFieldBackground :
                 Constants.Colors.textFieldWarning)
+            .cornerRadius(10)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
 
             VStack(alignment: .leading) {

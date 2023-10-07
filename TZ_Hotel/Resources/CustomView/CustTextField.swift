@@ -84,9 +84,8 @@ struct CustTextField: View {
                 }
             }
         }
-        .frame(height: dataPickerShow ? 100 : 52)
+        .frame(height: dataPickerShow ? 110 : 52)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        .cornerRadius(10)
         .onTapGesture {
             onTapped = true
             isFocused.toggle()

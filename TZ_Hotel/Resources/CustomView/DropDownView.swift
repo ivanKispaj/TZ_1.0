@@ -40,44 +40,45 @@ struct DropDownView: View {
             VStack {
                 CustTextField(placeholder: "Имя", value: $tourist.name,
                               keyboardType: .alphabet)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.name.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
+                    .cornerRadius(10)
                 CustTextField(placeholder: "Фамилия", value: $tourist.lastName,
                               keyboardType: .alphabet)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.lastName.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
+                    .cornerRadius(10)
+
                 CustTextField(placeholder: "Дата рождения", value: $tourist.birthDate,
                               keyboardType: .alphabet, wihtDataPicker: true)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.birthDate.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
+                    .cornerRadius(10)
+
                 CustTextField(placeholder: "Гражданство", value: $tourist.nationality,
                               keyboardType: .alphabet)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.nationality.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
-
+                    .cornerRadius(10)
                 CustTextField(placeholder: "Номер загран паспорта", value: $tourist.passportCode,
                               keyboardType: .decimalPad)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.passportCode.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
-
+                    .cornerRadius(10)
                 CustTextField(placeholder: "Срок действия загранпаспорта", value: $tourist.passportValidityPeriod,
                               keyboardType: .default)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     .background(tourist.isValidData || (!tourist.isValidData &&
                             tourist.passportValidityPeriod.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
+                    .cornerRadius(10)
             }
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         }
     }
 }
