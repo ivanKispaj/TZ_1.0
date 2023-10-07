@@ -39,27 +39,27 @@ struct DropDownView: View {
         if isDrop {
             VStack {
                 CustTextField(placeholder: "Имя", value: $tourist.name,
-                              keyboardType: .alphabet)
+                              keyboardType: .twitter)
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.name.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
                     .cornerRadius(10)
                 CustTextField(placeholder: "Фамилия", value: $tourist.lastName,
-                              keyboardType: .alphabet)
+                              keyboardType: .twitter)
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.lastName.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
                     .cornerRadius(10)
 
                 CustTextField(placeholder: "Дата рождения", value: $tourist.birthDate,
-                              keyboardType: .alphabet, wihtDataPicker: true)
+                              keyboardType: .default, wihtDataPicker: true)
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.birthDate.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)
                     .cornerRadius(10)
 
                 CustTextField(placeholder: "Гражданство", value: $tourist.nationality,
-                              keyboardType: .alphabet)
+                              keyboardType: .twitter)
                     .background(tourist.isValidData || (!tourist.isValidData && tourist.nationality.count > 0)
                         ? Constants.Colors.textFieldBackground :
                         Constants.Colors.textFieldWarning)

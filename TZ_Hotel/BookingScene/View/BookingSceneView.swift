@@ -70,6 +70,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             HStack {
                 Text("Тур")
                     .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.greyTintColor)
+                Spacer()
                 Text(viewData.getTourPrice())
                     .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.black)
             }
