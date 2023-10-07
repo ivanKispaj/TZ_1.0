@@ -18,7 +18,7 @@
 		802D38712ACFF1E90075DEFE /* BookingViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */; };
 		803A82142AD13703001BBD5D /* BlockModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A82132AD13703001BBD5D /* BlockModifier.swift */; };
 		803A82162AD13DF2001BBD5D /* FontWithForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A82152AD13DF2001BBD5D /* FontWithForeground.swift */; };
-		8071BD3A2AD1C1B300A03691 /* preview_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8071BD392AD1C1B200A03691 /* preview_video.mp4 */; };
+		8071BD3C2AD1C3E200A03691 /* preview_video-2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8071BD3B2AD1C3E200A03691 /* preview_video-2.mp4 */; };
 		8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZHotelApp.swift */; };
 		8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7192AC3D9FA00346571 /* MainSceneView.swift */; };
 		8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71B2AC3D9FC00346571 /* Assets.xcassets */; };
@@ -65,7 +65,7 @@
 		802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModelProtocol.swift; sourceTree = "<group>"; };
 		803A82132AD13703001BBD5D /* BlockModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModifier.swift; sourceTree = "<group>"; };
 		803A82152AD13DF2001BBD5D /* FontWithForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWithForeground.swift; sourceTree = "<group>"; };
-		8071BD392AD1C1B200A03691 /* preview_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = preview_video.mp4; sourceTree = "<group>"; };
+		8071BD3B2AD1C3E200A03691 /* preview_video-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "preview_video-2.mp4"; sourceTree = "<group>"; };
 		8086F7142AC3D9FA00346571 /* TZ_Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZ_Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8086F7172AC3D9FA00346571 /* TZHotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZHotelApp.swift; sourceTree = "<group>"; };
 		8086F7192AC3D9FA00346571 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		8086F7252AC3DA7300346571 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				8071BD392AD1C1B200A03691 /* preview_video.mp4 */,
+				8071BD3B2AD1C3E200A03691 /* preview_video-2.mp4 */,
 				8086F71B2AC3D9FC00346571 /* Assets.xcassets */,
 				8086F7262AC3DAAD00346571 /* Colors.xcassets */,
 				8086F74E2AC6FE2800346571 /* Image.xcassets */,
@@ -435,10 +435,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8086F7272AC3DAAD00346571 /* Colors.xcassets in Resources */,
+				8071BD3C2AD1C3E200A03691 /* preview_video-2.mp4 in Resources */,
 				8086F74F2AC6FE2800346571 /* Image.xcassets in Resources */,
 				8086F71F2AC3D9FC00346571 /* Preview Assets.xcassets in Resources */,
 				8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */,
-				8071BD3A2AD1C1B300A03691 /* preview_video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
