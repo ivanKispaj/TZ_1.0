@@ -37,4 +37,8 @@
 
 
 
-[![asciicast](https://i9.ytimg.com/vi/1bZMun4uKSo/mq1.jpg?sqp=CPSghakG-oaymwEmCMACELQB8quKqQMa8AEB-AHcAYAC4AOKAgwIABABGH8gRSg1MA8%3D&rs=AOn4CLAZHpDA4xnUircy-AtRW6hO561rzg&retry=4)](https://youtu.be/1bZMun4uKSo)
+https://github.com/ivanKispaj/TZ_1.0/assets/91827767/4b97de9f-0782-4521-9ac1-f821df7e5bbc
+
+
+
+
