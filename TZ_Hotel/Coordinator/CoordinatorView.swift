@@ -12,6 +12,7 @@ struct CoordinatorView: View {
     var body: some View {
         NavigationStack(path: $coordinator.path) {
             coordinator.build(page: .hotel)
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page: page)
                         .navigationBarTitleDisplayMode(.inline)

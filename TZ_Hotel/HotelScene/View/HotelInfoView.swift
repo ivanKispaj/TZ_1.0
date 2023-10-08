@@ -11,7 +11,7 @@ struct HotelInfoView: View {
     var viewData: HotelPresentModel
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             CarouselImage(item: viewData.imageData)
             rating()
             hotelName()
@@ -20,7 +20,7 @@ struct HotelInfoView: View {
         }
         .background(Constants.Colors.white)
         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 0))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
     }
 
     // MARK: - Rating view

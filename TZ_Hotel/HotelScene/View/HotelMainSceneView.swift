@@ -12,22 +12,24 @@ struct HotelMainSceneView<ViewModel: MainViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
+        ZStack {
             if let viewData = self.viewModel.viewData {
-                ScrollView {
-                    VStack {
+                ScrollView(.vertical) {
+                    VStack(spacing: 0) {
                         HotelInfoView(viewData: viewData)
                         HotelDescriptionView(viewData: viewData)
-                        VStack {
-                            SelectedButton(buttonText: "К выбору номера") {
-                                // some action
-                                coordinator.push(.rooms(viewData.name))
-                            }
-                        }
-                        .background(Constants.Colors.white)
                     }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     .background(Constants.Colors.basicBackground)
+                    VStack(spacing: 0) {
+                        SelectedButton(buttonText: "К выбору номера") {
+                            // some action
+                            coordinator.push(.rooms(viewData.name))
+                        }
+                    }
+                    .background(Constants.Colors.white)
                 }
+                .background(ignoresSafeAreaEdges: .all)
             } else {
                 Spacer()
                 HStack {

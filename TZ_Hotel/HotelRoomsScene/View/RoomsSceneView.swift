@@ -23,14 +23,13 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 ScrollView {
                     VStack(spacing: 0) {
                         ForEach(0 ..< data.count, id: \.self) { modelIndex in
-                            Group {
+                            VStack {
                                 VStack(alignment: .leading, spacing: 0) {
                                     CarouselImage(item: data[modelIndex].imgData)
                                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
 
                                     Text(data[modelIndex].name)
-                                        .font(Font(Constants.Fonts.sfpro22Regular))
-                                        .foregroundColor(Constants.Colors.black)
+                                        .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
 
                                     VStack(alignment: .leading) {
@@ -44,11 +43,9 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
 
                                     HStack(alignment: .bottom) {
                                         Text(data[modelIndex].getPrice())
-                                            .font(Font(Constants.Fonts.sfpro30Medium))
-                                            .foregroundColor(Constants.Colors.black)
+                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro30Medium), color: Constants.Colors.black)
                                         Text(data[modelIndex].priceDescription)
-                                            .font(Font(Constants.Fonts.sfpro14Light))
-                                            .foregroundColor(Constants.Colors.greyTintColor)
+                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro14Light), color: Constants.Colors.greyTintColor)
                                             .padding(5)
                                     }
                                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -57,9 +54,8 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                                         coordinator.push(.booking)
                                     })
                                 }
-                                .background(Constants.Colors.white)
+                                .blockStyle(color: Constants.Colors.white)
                                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
-                                .cornerRadius(12)
                             }
                         }
                     }
@@ -99,7 +95,7 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 HStack(alignment: .center) {
                     Text("Подробнее о номере")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .foregroundColor(Constants.Colors.buttonBlueTint)
+                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.buttonBlueTint)
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 6, height: 12)
@@ -108,8 +104,7 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 }
             }
             .frame(height: 29)
-            .background(Constants.Colors.buttonBackGRopac10)
-            .cornerRadius(5)
+            .blockStyle(color: Constants.Colors.buttonBackGRopac10, radius: 5)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
     }
@@ -128,10 +123,8 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
     ForEach(data, id: \.self) { word in
         Text(word)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            .font(Font(Constants.Fonts.sfpro16Regular))
-            .background(Constants.Colors.backGroundPeculiarities)
-            .foregroundColor(Constants.Colors.greyTintColor)
-            .cornerRadius(5)
+            .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
+            .blockStyle(color: Constants.Colors.backGroundPeculiarities, radius: 5)
         Spacer()
             .frame(width: 5, alignment: .leading)
     }
