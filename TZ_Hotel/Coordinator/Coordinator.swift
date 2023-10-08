@@ -33,8 +33,7 @@ class Coordinator: ObservableObject {
     func build(page: Page) -> some View {
         switch page {
         case .hotel:
-            MainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>()))
-                .navigationBarTitleDisplayMode(.inline)
+            HotelMainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>()))
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Отель")
@@ -44,70 +43,29 @@ class Coordinator: ObservableObject {
                 }
         case let .rooms(title):
             RoomsSceneView(viewModel: RoomsViewModel(service: AlamofierService<RoomsParseModel>()))
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden()
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(title)
                             .font(Font(Constants.Fonts.headline1))
                             .foregroundColor(Constants.Colors.black)
                     }
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            self.pop()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .resizable()
-                                .frame(width: 6, height: 12)
-                                .foregroundColor(Constants.Colors.black)
-                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
-                        }
-                    }
                 }
         case .booking:
             BookingSceneView(viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>()))
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden()
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Бронирование")
                             .font(Font(Constants.Fonts.headline1))
                             .foregroundColor(Constants.Colors.black)
                     }
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            self.pop()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .resizable()
-                                .frame(width: 6, height: 12)
-                                .foregroundColor(Constants.Colors.black)
-                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
-                        }
-                    }
                 }
         case .lastScene:
-            LastScene(title: "Заказ оплачен")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden()
+            LastScene()
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text("Заказ оплачен")
-                                .font(Font(Constants.Fonts.headline1))
-                                .foregroundColor(Constants.Colors.black)
-                        }
-                    }
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            self.pop()
-                        } label: {
-                            Image(systemName: "chevron.left")
-                                .resizable()
-                                .frame(width: 6, height: 12)
-                                .foregroundColor(Constants.Colors.black)
-                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 8))
-                        }
+                        Text("Заказ оплачен")
+                            .font(Font(Constants.Fonts.headline1))
+                            .foregroundColor(Constants.Colors.black)
                     }
                 }
         }

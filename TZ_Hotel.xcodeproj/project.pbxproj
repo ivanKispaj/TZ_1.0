@@ -18,10 +18,12 @@
 		802D38712ACFF1E90075DEFE /* BookingViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */; };
 		803A82142AD13703001BBD5D /* BlockModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A82132AD13703001BBD5D /* BlockModifier.swift */; };
 		803A82162AD13DF2001BBD5D /* FontWithForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A82152AD13DF2001BBD5D /* FontWithForeground.swift */; };
+		806CF26B2AD2E8A90086A9CC /* HotelInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF26A2AD2E8A90086A9CC /* HotelInfoView.swift */; };
+		806CF26D2AD2E8EC0086A9CC /* HotelDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF26C2AD2E8EC0086A9CC /* HotelDescriptionView.swift */; };
 		8071BD3E2AD1C9BD00A03691 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071BD3D2AD1C9BD00A03691 /* Endpoint.swift */; };
 		8071BD402AD274E100A03691 /* OnDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071BD3F2AD274E100A03691 /* OnDelete.swift */; };
 		8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZHotelApp.swift */; };
-		8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7192AC3D9FA00346571 /* MainSceneView.swift */; };
+		8086F71A2AC3D9FA00346571 /* HotelMainSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7192AC3D9FA00346571 /* HotelMainSceneView.swift */; };
 		8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71B2AC3D9FC00346571 /* Assets.xcassets */; };
 		8086F71F2AC3D9FC00346571 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F71E2AC3D9FC00346571 /* Preview Assets.xcassets */; };
 		8086F7272AC3DAAD00346571 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8086F7262AC3DAAD00346571 /* Colors.xcassets */; };
@@ -66,11 +68,13 @@
 		802D38702ACFF1E90075DEFE /* BookingViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModelProtocol.swift; sourceTree = "<group>"; };
 		803A82132AD13703001BBD5D /* BlockModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockModifier.swift; sourceTree = "<group>"; };
 		803A82152AD13DF2001BBD5D /* FontWithForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWithForeground.swift; sourceTree = "<group>"; };
+		806CF26A2AD2E8A90086A9CC /* HotelInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelInfoView.swift; sourceTree = "<group>"; };
+		806CF26C2AD2E8EC0086A9CC /* HotelDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelDescriptionView.swift; sourceTree = "<group>"; };
 		8071BD3D2AD1C9BD00A03691 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8071BD3F2AD274E100A03691 /* OnDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDelete.swift; sourceTree = "<group>"; };
 		8086F7142AC3D9FA00346571 /* TZ_Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZ_Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8086F7172AC3D9FA00346571 /* TZHotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZHotelApp.swift; sourceTree = "<group>"; };
-		8086F7192AC3D9FA00346571 /* MainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneView.swift; sourceTree = "<group>"; };
+		8086F7192AC3D9FA00346571 /* HotelMainSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelMainSceneView.swift; sourceTree = "<group>"; };
 		8086F71B2AC3D9FC00346571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8086F71E2AC3D9FC00346571 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8086F7262AC3DAAD00346571 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -277,7 +281,9 @@
 		8086F7562AC717CB00346571 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8086F7192AC3D9FA00346571 /* MainSceneView.swift */,
+				8086F7192AC3D9FA00346571 /* HotelMainSceneView.swift */,
+				806CF26A2AD2E8A90086A9CC /* HotelInfoView.swift */,
+				806CF26C2AD2E8EC0086A9CC /* HotelDescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,7 +493,7 @@
 				803A82142AD13703001BBD5D /* BlockModifier.swift in Sources */,
 				8086F7432AC68B5F00346571 /* ConnectError.swift in Sources */,
 				8071BD402AD274E100A03691 /* OnDelete.swift in Sources */,
-				8086F71A2AC3D9FA00346571 /* MainSceneView.swift in Sources */,
+				8086F71A2AC3D9FA00346571 /* HotelMainSceneView.swift in Sources */,
 				8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */,
 				8086F7452AC68C5600346571 /* NetworkServiceProtocol.swift in Sources */,
 				80D1D0742ACA7DD500D36982 /* CustTextField.swift in Sources */,
@@ -497,7 +503,9 @@
 				8086F7782AC87F1800346571 /* TouristModel.swift in Sources */,
 				8086F7532AC7173E00346571 /* Extension_View.swift in Sources */,
 				8021FD0A2ACD31C6006DBF6D /* Extension_Array.swift in Sources */,
+				806CF26B2AD2E8A90086A9CC /* HotelInfoView.swift in Sources */,
 				8086F77F2AC95D9600346571 /* LastScene.swift in Sources */,
+				806CF26D2AD2E8EC0086A9CC /* HotelDescriptionView.swift in Sources */,
 				802D38712ACFF1E90075DEFE /* BookingViewModelProtocol.swift in Sources */,
 				8021FD182ACDE103006DBF6D /* Extension_Font.swift in Sources */,
 				8086F7352AC3E72F00346571 /* MainViewModel.swift in Sources */,

@@ -13,3 +13,16 @@ extension View {
         ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
     }
 }
+
+extension View {
+    func onBackSwipe(perform action: @escaping () -> Void) -> some View {
+        gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.startLocation.x < 50, value.translation.width > 80 {
+                        action()
+                    }
+                }
+        )
+    }
+}

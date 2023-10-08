@@ -10,7 +10,6 @@ import SwiftUI
 struct LastScene: View {
     @EnvironmentObject var coordinator: Coordinator
 
-    let title: String
     var body: some View {
         VStack {
             VStack {

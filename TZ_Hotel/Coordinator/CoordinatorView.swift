@@ -14,6 +14,21 @@ struct CoordinatorView: View {
             coordinator.build(page: .hotel)
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page: page)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button {
+                                    coordinator.pop()
+                                } label: {
+                                    Image(systemName: "chevron.left")
+                                        .resizable()
+                                        .frame(width: 6, height: 12)
+                                        .foregroundColor(Constants.Colors.black)
+                                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                                }
+                            }
+                        }
                 }
         }
         .background(Constants.Colors.white)

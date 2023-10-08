@@ -34,7 +34,10 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
 
                                     VStack(alignment: .leading) {
-                                        peculiartiesView(data[modelIndex].getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30))
+                                        peculiartiesView(data[modelIndex].getPeculiarities(
+                                            font: Constants.Fonts.sfpro16Regular,
+                                            padding: 30
+                                        ))
                                     }
 
                                     buttonInfo()
@@ -62,6 +65,7 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                     }
                     .background(Constants.Colors.basicBackground)
                 }
+
             } else {
                 Spacer()
                 HStack {
@@ -79,6 +83,9 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 Spacer()
             }
         }
+        .onBackSwipe(perform: {
+            coordinator.pop()
+        })
         .background(Constants.Colors.white)
     }
 
