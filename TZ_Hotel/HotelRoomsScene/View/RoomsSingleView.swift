@@ -11,7 +11,7 @@ struct RoomsSingleView: View {
     @Binding var viewData: RoomsPresentModel
     var body: some View {
         CarouselImage(item: viewData.imgData)
-            .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+            .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         Text(viewData.name)
             .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular),
                                 color: Constants.Colors.black)

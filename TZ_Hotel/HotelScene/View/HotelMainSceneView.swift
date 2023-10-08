@@ -12,7 +12,7 @@ struct HotelMainSceneView<ViewModel: MainViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        ZStack {
+        VStack {
             if let viewData = self.viewModel.viewData {
                 ScrollView(.vertical) {
                     VStack(spacing: 0) {
@@ -29,7 +29,6 @@ struct HotelMainSceneView<ViewModel: MainViewModelProtocol>: View {
                     }
                     .background(Constants.Colors.white)
                 }
-                .background(ignoresSafeAreaEdges: .all)
             } else {
                 Spacer()
                 HStack {

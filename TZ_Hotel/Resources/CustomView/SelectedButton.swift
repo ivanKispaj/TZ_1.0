@@ -28,7 +28,7 @@ struct SelectedButton: View {
             .frame(height: buttonHeight)
             .background(buttonColor)
             .cornerRadius(buttonRadius)
-            .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
     }
 }
