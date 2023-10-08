@@ -15,7 +15,7 @@ struct RoomsSingleView: View {
         Text(viewData.name)
             .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular),
                                 color: Constants.Colors.black)
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         GroupedText(data: viewData.getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30))
         buttonInfo()
         HStack(alignment: .bottom) {

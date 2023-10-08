@@ -105,6 +105,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .blockStyle(color: Constants.Colors.white)
     }
 
@@ -143,7 +144,6 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
         VStack(alignment: .leading) {
             DropDownView(sectionName: sectionName, tourist: $viewModel.tourists[index])
         }
-
         .blockStyle(color: Constants.Colors.white)
     }
 
@@ -179,6 +179,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .blockStyle(color: Constants.Colors.white)
     }
 
@@ -194,6 +195,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             twoColumnText("Номер", textTwo: viewData.room)
             twoColumnText("Питание", textTwo: viewData.nutrition)
         }
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .blockStyle(color: Constants.Colors.white)
     }
 
@@ -220,6 +222,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             }
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
         }
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .blockStyle(color: Constants.Colors.white)
     }
 

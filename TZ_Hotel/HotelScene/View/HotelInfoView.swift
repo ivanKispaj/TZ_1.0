@@ -11,7 +11,7 @@ struct HotelInfoView: View {
     var viewData: HotelPresentModel
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 10) {
             CarouselImage(item: viewData.imageData)
             RatingView(text: viewData.rating + " " + viewData.ratingDescription)
             hotelName()

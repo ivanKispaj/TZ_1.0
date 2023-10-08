@@ -24,8 +24,8 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                     VStack(spacing: 0) {
                         ForEach(0 ..< data.count, id: \.self) { modelIndex in
 
-                            VStack(spacing: 0) {
-                                VStack(alignment: .leading) {
+                            VStack() {
+                                VStack(alignment: .leading, spacing: 5) {
                                     RoomsSingleView(viewData: self.$viewModel.viewData[modelIndex])
                                     SelectedButton(buttonText: "Выбрать номер", action: {
                                         coordinator.push(.booking)
