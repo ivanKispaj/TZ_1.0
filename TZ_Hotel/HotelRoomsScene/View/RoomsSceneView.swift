@@ -29,7 +29,8 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
 
                                     Text(data[modelIndex].name)
-                                        .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
+                                        .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular),
+                                                            color: Constants.Colors.black)
                                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
 
                                     VStack(alignment: .leading) {
@@ -43,9 +44,11 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
 
                                     HStack(alignment: .bottom) {
                                         Text(data[modelIndex].getPrice())
-                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro30Medium), color: Constants.Colors.black)
+                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro30Medium),
+                                                                color: Constants.Colors.black)
                                         Text(data[modelIndex].priceDescription)
-                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro14Light), color: Constants.Colors.greyTintColor)
+                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro14Light),
+                                                                color: Constants.Colors.greyTintColor)
                                             .padding(5)
                                     }
                                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -95,7 +98,8 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 HStack(alignment: .center) {
                     Text("Подробнее о номере")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.buttonBlueTint)
+                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular),
+                                            color: Constants.Colors.buttonBlueTint)
                     Image(systemName: "chevron.right")
                         .resizable()
                         .frame(width: 6, height: 12)
