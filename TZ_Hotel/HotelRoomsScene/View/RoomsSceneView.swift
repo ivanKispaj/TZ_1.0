@@ -23,36 +23,10 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                 ScrollView {
                     VStack(spacing: 0) {
                         ForEach(0 ..< data.count, id: \.self) { modelIndex in
-                            VStack {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    CarouselImage(item: data[modelIndex].imgData)
-                                        .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
 
-                                    Text(data[modelIndex].name)
-                                        .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular),
-                                                            color: Constants.Colors.black)
-                                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
-
-                                    VStack(alignment: .leading) {
-                                        peculiartiesView(data[modelIndex].getPeculiarities(
-                                            font: Constants.Fonts.sfpro16Regular,
-                                            padding: 30
-                                        ))
-                                    }
-
-                                    buttonInfo()
-
-                                    HStack(alignment: .bottom) {
-                                        Text(data[modelIndex].getPrice())
-                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro30Medium),
-                                                                color: Constants.Colors.black)
-                                        Text(data[modelIndex].priceDescription)
-                                            .fontWithForeground(font: Font(Constants.Fonts.sfpro14Light),
-                                                                color: Constants.Colors.greyTintColor)
-                                            .padding(5)
-                                    }
-                                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
+                            VStack(spacing: 0) {
+                                VStack(alignment: .leading) {
+                                    RoomsSingleView(viewData: self.$viewModel.viewData[modelIndex])
                                     SelectedButton(buttonText: "Выбрать номер", action: {
                                         coordinator.push(.booking)
                                     })
@@ -60,9 +34,15 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
                                 .blockStyle(color: Constants.Colors.white)
                                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                             }
+                            .background(Constants.Colors.basicBackground)
                         }
+                        HStack {
+                            Spacer()
+                                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                        }
+                        .background(Constants.Colors.basicBackground)
+                        .frame(height: 8)
                     }
-                    .background(Constants.Colors.basicBackground)
                 }
 
             } else {
@@ -86,51 +66,6 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
             coordinator.pop()
         })
         .background(Constants.Colors.white)
-    }
-
-    // MARK: - button info
-
-    @ViewBuilder private func buttonInfo() -> some View {
-        VStack {
-            Button {
-                // Some Action
-            } label: {
-                HStack(alignment: .center) {
-                    Text("Подробнее о номере")
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular),
-                                            color: Constants.Colors.buttonBlueTint)
-                    Image(systemName: "chevron.right")
-                        .resizable()
-                        .frame(width: 6, height: 12)
-                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .foregroundColor(Constants.Colors.buttonBlueTint)
-                }
-            }
-            .frame(height: 29)
-            .blockStyle(color: Constants.Colors.buttonBackGRopac10, radius: 5)
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-        }
-    }
-
-    @ViewBuilder private func peculiartiesView(_ data: [[String]]) -> some View {
-        ForEach(data, id: \.self) { arr in
-            HStack(spacing: 0) {
-                peculiartiesData(arr)
-            }
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-        }
-    }
-}
-
-@ViewBuilder private func peculiartiesData(_ data: [String]) -> some View {
-    ForEach(data, id: \.self) { word in
-        Text(word)
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
-            .blockStyle(color: Constants.Colors.backGroundPeculiarities, radius: 5)
-        Spacer()
-            .frame(width: 5, alignment: .leading)
     }
 }
 

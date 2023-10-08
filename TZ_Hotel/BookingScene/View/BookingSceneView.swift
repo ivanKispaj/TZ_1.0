@@ -158,7 +158,8 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                           value: $phoneNumber,
                           keyboardType: .phonePad,
                           fieldsState: self.$viewModel.validState.isValidNumber,
-                          isPlainFields: false) { newValue in
+                          isPlainFields: false)
+            { newValue in
                 if let newNumber = self.viewModel.formatedPhoneNumber(newValue) {
                     _ = self.viewModel.verifyInputData(phone: newValue, email: email)
                     phoneNumber = newNumber
@@ -168,7 +169,8 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                           value: $email,
                           keyboardType: .emailAddress,
                           fieldsState: self.$viewModel.validState.isValidEmail,
-                          isPlainFields: false) { newValue in
+                          isPlainFields: false)
+            { newValue in
                 _ = self.viewModel.verifyInputData(phone: phoneNumber, email: newValue)
             }
 

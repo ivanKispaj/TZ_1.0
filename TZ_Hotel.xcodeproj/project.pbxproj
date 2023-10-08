@@ -20,6 +20,8 @@
 		803A82162AD13DF2001BBD5D /* FontWithForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A82152AD13DF2001BBD5D /* FontWithForeground.swift */; };
 		806CF26B2AD2E8A90086A9CC /* HotelInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF26A2AD2E8A90086A9CC /* HotelInfoView.swift */; };
 		806CF26D2AD2E8EC0086A9CC /* HotelDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF26C2AD2E8EC0086A9CC /* HotelDescriptionView.swift */; };
+		806CF26F2AD306B60086A9CC /* RoomsSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF26E2AD306B60086A9CC /* RoomsSingleView.swift */; };
+		806CF2712AD30BD20086A9CC /* GroupedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CF2702AD30BD20086A9CC /* GroupedText.swift */; };
 		8071BD3E2AD1C9BD00A03691 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071BD3D2AD1C9BD00A03691 /* Endpoint.swift */; };
 		8071BD402AD274E100A03691 /* OnDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071BD3F2AD274E100A03691 /* OnDelete.swift */; };
 		8086F7182AC3D9FA00346571 /* TZHotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8086F7172AC3D9FA00346571 /* TZHotelApp.swift */; };
@@ -70,6 +72,8 @@
 		803A82152AD13DF2001BBD5D /* FontWithForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWithForeground.swift; sourceTree = "<group>"; };
 		806CF26A2AD2E8A90086A9CC /* HotelInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelInfoView.swift; sourceTree = "<group>"; };
 		806CF26C2AD2E8EC0086A9CC /* HotelDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelDescriptionView.swift; sourceTree = "<group>"; };
+		806CF26E2AD306B60086A9CC /* RoomsSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsSingleView.swift; sourceTree = "<group>"; };
+		806CF2702AD30BD20086A9CC /* GroupedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedText.swift; sourceTree = "<group>"; };
 		8071BD3D2AD1C9BD00A03691 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8071BD3F2AD274E100A03691 /* OnDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDelete.swift; sourceTree = "<group>"; };
 		8086F7142AC3D9FA00346571 /* TZ_Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TZ_Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,7 @@
 				8086F7692AC8155D00346571 /* CarouselImage.swift */,
 				8086F7792AC881B100346571 /* DropDownView.swift */,
 				80D1D0732ACA7DD500D36982 /* CustTextField.swift */,
+				806CF2702AD30BD20086A9CC /* GroupedText.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				8086F7602AC71A5900346571 /* RoomsSceneView.swift */,
+				806CF26E2AD306B60086A9CC /* RoomsSingleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,6 +515,8 @@
 				802D38712ACFF1E90075DEFE /* BookingViewModelProtocol.swift in Sources */,
 				8021FD182ACDE103006DBF6D /* Extension_Font.swift in Sources */,
 				8086F7352AC3E72F00346571 /* MainViewModel.swift in Sources */,
+				806CF2712AD30BD20086A9CC /* GroupedText.swift in Sources */,
+				806CF26F2AD306B60086A9CC /* RoomsSingleView.swift in Sources */,
 				802D386F2ACFF1B40075DEFE /* MainViewModelProtocol.swift in Sources */,
 				8086F77A2AC881B100346571 /* DropDownView.swift in Sources */,
 				8071BD3E2AD1C9BD00A03691 /* Endpoint.swift in Sources */,
