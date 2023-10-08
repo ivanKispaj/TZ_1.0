@@ -59,4 +59,10 @@ class BookingViewModel: BookingViewModelProtocol {
 
         return formatter.formattesPhone(value: value)
     }
+
+    func removeTourist(_ index: Int) {
+        if index != 0 && tourists.count - 1 == index {
+            tourists.remove(at: index)
+        }
+    }
 }

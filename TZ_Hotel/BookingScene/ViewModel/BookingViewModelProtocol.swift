@@ -15,4 +15,5 @@ protocol BookingViewModelProtocol: ObservableObject, ViewModelProtocol {
 
     func verifyInputData(phone: String, email: String) -> Bool
     func formatedPhoneNumber(_ value: String?) -> String?
+    func removeTourist(_ index: Int) -> Void
 }

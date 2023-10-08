@@ -11,13 +11,14 @@ struct CustTextField: View {
     var placeholder: String
     @Binding var value: String
     var keyboardType: UIKeyboardType = .default
+    @Binding var fieldsState: Bool
     var wihtDataPicker: Bool = false
+    var isPlainFields = true
     @State var onTapped: Bool = false
     @State var dataPickerShow: Bool = false
     var changed: (String) -> Void = { _ in }
     @State var selectedDate: Date = .init()
     @FocusState var isFocused: Bool
-
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru-RU")
@@ -85,6 +86,8 @@ struct CustTextField: View {
             }
         }
         .frame(height: dataPickerShow ? 110 : 52)
+        .background(getFieldColor())
+        .cornerRadius(10)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         .onTapGesture {
             onTapped = true
@@ -92,6 +95,20 @@ struct CustTextField: View {
             if wihtDataPicker {
                 dataPickerShow.toggle()
             }
+        }
+    }
+
+    private func getFieldColor() -> Color {
+        if isPlainFields {
+            if fieldsState || (!fieldsState && value.count > 0) {
+                return Constants.Colors.textFieldBackground
+            }
+            return Constants.Colors.textFieldWarning
+        } else {
+            if fieldsState {
+                return Constants.Colors.textFieldBackground
+            }
+            return Constants.Colors.textFieldWarning
         }
     }
 }

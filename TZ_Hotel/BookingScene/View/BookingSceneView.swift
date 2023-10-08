@@ -25,7 +25,12 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                         tourInfo(viewData: viewData)
                         buyerInformation(viewData: viewData)
                         ForEach(0 ..< self.viewModel.tourists.count, id: \.self) { index in
-                            self.tourist(viewData: viewData, index: index)
+                            self.tourist(sectionName: viewData.formatter.integerToWord(index), index: index)
+                                .onDelete {
+                                    withAnimation(.smooth) {
+                                        self.viewModel.removeTourist(index)
+                                    }
+                                }
                         }
                         addingTourist()
                         paymentTour(viewData: viewData)
@@ -134,10 +139,11 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
     // MARK: - Tourist view
 
-    @ViewBuilder private func tourist(viewData: BookingParseModel, index: Int) -> some View {
+    @ViewBuilder private func tourist(sectionName: String, index: Int) -> some View {
         VStack(alignment: .leading) {
-            DropDownView(touristStr: viewData.formatter.integerToWord(index), tourist: $viewModel.tourists[index])
+            DropDownView(sectionName: sectionName, tourist: $viewModel.tourists[index])
         }
+
         .blockStyle(color: Constants.Colors.white)
     }
 
@@ -148,24 +154,24 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
             Text("Информация о покупателе")
                 .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            CustTextField(placeholder: "Номер телефона", value: $phoneNumber, keyboardType: .phonePad) { newValue in
+            CustTextField(placeholder: "Номер телефона",
+                          value: $phoneNumber,
+                          keyboardType: .phonePad,
+                          fieldsState: self.$viewModel.validState.isValidNumber, isPlainFields: false)
+            { newValue in
                 if let newNumber = self.viewModel.formatedPhoneNumber(newValue) {
                     _ = self.viewModel.verifyInputData(phone: newValue, email: email)
                     phoneNumber = newNumber
+                    print(self.viewModel.validState.isValidNumber)
                 }
             }
-            .background(self.viewModel.validState.isValidNumber ? Constants.Colors.textFieldBackground :
-                Constants.Colors.textFieldWarning)
-            .cornerRadius(10)
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            CustTextField(placeholder: "Почта", value: $email, keyboardType: .emailAddress) { newValue in
+            CustTextField(placeholder: "Почта",
+                          value: $email,
+                          keyboardType: .emailAddress,
+                          fieldsState: self.$viewModel.validState.isValidEmail, isPlainFields: false)
+            { newValue in
                 _ = self.viewModel.verifyInputData(phone: phoneNumber, email: newValue)
             }
-            .background(self.viewModel.validState.isValidEmail ? Constants.Colors.textFieldBackground :
-                Constants.Colors.textFieldWarning)
-            .cornerRadius(10)
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
 
             VStack(alignment: .leading) {
                 Text("Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту")

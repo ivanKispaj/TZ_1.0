@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct DropDownView: View {
-    let touristStr: String
+    let sectionName: String
     @Binding var tourist: TouristModel
     @State var isDrop: Bool = false
-
     var body: some View {
         HStack {
-            Text("\(touristStr) турист")
+            Text("\(sectionName) турист")
                 .font(Font(Constants.Fonts.sfpro22Regular))
             Spacer()
             Button {
@@ -38,47 +37,37 @@ struct DropDownView: View {
 
         if isDrop {
             VStack {
-                CustTextField(placeholder: "Имя", value: $tourist.name,
-                              keyboardType: .twitter)
-                    .background(tourist.isValidData || (!tourist.isValidData && tourist.name.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
-                CustTextField(placeholder: "Фамилия", value: $tourist.lastName,
-                              keyboardType: .twitter)
-                    .background(tourist.isValidData || (!tourist.isValidData && tourist.lastName.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
+                CustTextField(placeholder: "Имя",
+                              value: $tourist.name,
+                              keyboardType: .twitter,
+                              fieldsState: $tourist.isValidData)
 
-                CustTextField(placeholder: "Дата рождения", value: $tourist.birthDate,
-                              keyboardType: .default, wihtDataPicker: true)
-                    .background(tourist.isValidData || (!tourist.isValidData && tourist.birthDate.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
+                CustTextField(placeholder: "Фамилия",
+                              value: $tourist.lastName,
+                              keyboardType: .twitter,
+                              fieldsState: $tourist.isValidData)
 
-                CustTextField(placeholder: "Гражданство", value: $tourist.nationality,
-                              keyboardType: .twitter)
-                    .background(tourist.isValidData || (!tourist.isValidData && tourist.nationality.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
-                CustTextField(placeholder: "Номер загран паспорта", value: $tourist.passportCode,
-                              keyboardType: .decimalPad)
-                    .background(tourist.isValidData || (!tourist.isValidData && tourist.passportCode.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
-                CustTextField(placeholder: "Срок действия загранпаспорта", value: $tourist.passportValidityPeriod,
-                              keyboardType: .default)
-                    .background(tourist.isValidData || (!tourist.isValidData &&
-                            tourist.passportValidityPeriod.count > 0)
-                        ? Constants.Colors.textFieldBackground :
-                        Constants.Colors.textFieldWarning)
-                    .cornerRadius(10)
+                CustTextField(placeholder: "Дата рождения",
+                              value: $tourist.birthDate,
+                              keyboardType: .default,
+                              fieldsState: $tourist.isValidData,
+                              wihtDataPicker: true)
+
+                CustTextField(placeholder: "Гражданство",
+                              value: $tourist.nationality,
+                              keyboardType: .twitter,
+                              fieldsState: $tourist.isValidData)
+
+                CustTextField(placeholder: "Номер загран паспорта",
+                              value: $tourist.passportCode,
+                              keyboardType: .decimalPad,
+                              fieldsState: $tourist.isValidData)
+
+                CustTextField(placeholder: "Срок действия загранпаспорта",
+                              value: $tourist.passportValidityPeriod,
+                              keyboardType: .default,
+                              fieldsState: $tourist.isValidData)
             }
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         }
     }
 }
