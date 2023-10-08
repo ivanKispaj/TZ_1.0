@@ -8,18 +8,23 @@
   <li>﻿SwiftUI</li>
   <li>﻿Combine</li>
   </ul>
+  
+  ## Дизайн в Figma
 
-        
+<img width="600" alt="figma" src="https://github.com/ivanKispaj/TZ_1.0/assets/91827767/0e01aa80-b3b3-44a9-8495-3b96c55b9f2a">
+  
     
 
 ## Реализованно:
 
-В проекте использовал:
-
-    Реализованн Coordinator для навигвции по экранам
-    Реализованно 4 экрана в соответствии с дизайном из Figma
-    Реализованна загрузка данных по URL пердоставленного Api
-    данные подгружаются с использованием Alamofire и DispatchGroup
+<ol>
+  <li>Реализован Coordinator для навигации по экранам</li>
+  <li>Реализовано 4 экрана в соответствии с дизайном из Figma</li>
+  <li>﻿Реализована загрузка данных по URL пердоставленного Api c использованием endpoint</li>
+  <li>﻿данные подгружаются с использованием Alamofire и DispatchGroup</li>
+    <li>Code style проверен и отредактирован с помощью swiftlint  и swiftformat</li>
+      <li>Протестированно на IOS 17 / 16.4</li>
+  </ol>
 
 Используемый Стек:
 <ul>
@@ -27,13 +32,8 @@
   <li>MVVM + Coordinator</li>
   <li>﻿SwiftUI</li>
   <li>﻿Alamofire</li>
+    <li>﻿GCD</li>
 </ul>
-
-### P.S
-        Минимально рабочий вариант соответствующий ТЗ на мой взгляд
-        Осознаю что код еще требует доработки, рефакторинга...
-        Появится время буду дорабатывать
-
 
 ### App Preview
 https://github.com/ivanKispaj/TZ_1.0/assets/91827767/4b97de9f-0782-4521-9ac1-f821df7e5bbc
