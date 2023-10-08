@@ -114,7 +114,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("Добавить туриста")
-                    .font(Font(Constants.Fonts.sfpro22Regular))
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
                 Spacer()
                 Button {
                     // adding tourist
@@ -158,8 +158,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                           value: $phoneNumber,
                           keyboardType: .phonePad,
                           fieldsState: self.$viewModel.validState.isValidNumber,
-                          isPlainFields: false)
-            { newValue in
+                          isPlainFields: false) { newValue in
                 if let newNumber = self.viewModel.formatedPhoneNumber(newValue) {
                     _ = self.viewModel.verifyInputData(phone: newValue, email: email)
                     phoneNumber = newNumber
@@ -169,8 +168,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                           value: $email,
                           keyboardType: .emailAddress,
                           fieldsState: self.$viewModel.validState.isValidEmail,
-                          isPlainFields: false)
-            { newValue in
+                          isPlainFields: false) { newValue in
                 _ = self.viewModel.verifyInputData(phone: phoneNumber, email: newValue)
             }
 
@@ -188,93 +186,13 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
     @ViewBuilder private func tourInfo(viewData: BookingParseModel) -> some View {
         VStack {
-            HStack {
-                Text("Вылет из")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(viewData.departure)
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Страна, город")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(viewData.arrivalCountry)
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Даты")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(viewData.tourStartDate)
-                    .foregroundColor(Color.black)
-                Text("-")
-                    .foregroundColor(Color.black)
-                Text(viewData.tourStopDate)
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Кол-во ночей")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(viewData.getCountOfNights())
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Отель")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(String(viewData.hotelName))
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Номер")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(String(viewData.room))
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-
-            HStack {
-                Text("Питание")
-                    .foregroundColor(Constants.Colors.greyTintColor)
-                    .frame(width: 150, alignment: .leading)
-                Text(String(viewData.nutrition))
-                    .foregroundColor(Color.black)
-
-                Spacer()
-            }
-            .font(Font(Constants.Fonts.sfpro16Light))
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            twoColumnText("Вылет из", textTwo: viewData.departure)
+            twoColumnText("Страна, город", textTwo: viewData.arrivalCountry)
+            twoColumnText("Даты", textTwo: viewData.tourStartDate + "-" + viewData.tourStopDate)
+            twoColumnText("Кол-во ночей", textTwo: viewData.getCountOfNights())
+            twoColumnText("Отель", textTwo: viewData.hotelName)
+            twoColumnText("Номер", textTwo: viewData.room)
+            twoColumnText("Питание", textTwo: viewData.nutrition)
         }
         .blockStyle(color: Constants.Colors.white)
     }
@@ -283,48 +201,40 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
     @ViewBuilder private func hotelShortData(viewData: BookingParseModel) -> some View {
         VStack(spacing: 0) {
-            VStack {
-                HStack {
-                    HStack(alignment: .center) {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .foregroundColor(Constants.Colors.ratingColor)
-                            .frame(width: 15, height: 15)
-                        Text(viewData.getHotelRating())
-                            .font(Font(Constants.Fonts.sfpro16Regular))
-                            .foregroundColor(Constants.Colors.ratingColor)
-                        Text(viewData.ratingDescription)
-                            .font(Font(Constants.Fonts.sfpro16Regular))
-                            .foregroundColor(Constants.Colors.ratingColor)
-                    }
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                    .frame(height: 29)
-                    .background(Constants.Colors.ratingBackground)
-                    .cornerRadius(5)
+            RatingView(text: viewData.getHotelRating() + " " + viewData.ratingDescription)
 
-                    Spacer()
-                }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-
-                HStack {
-                    Text(viewData.hotelName)
-                        .font(Font(Constants.Fonts.sfpro22Regular))
-                        .foregroundColor(Constants.Colors.black)
-                    Spacer()
-                }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
-
-                HStack {
-                    Button(viewData.hotelAdress) {
-                        // any action
-                    }
-                    .font(Font(Constants.Fonts.sfpro14Regular))
-                    Spacer()
-                }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+            HStack {
+                Text(viewData.hotelName)
+                    .font(Font(Constants.Fonts.sfpro22Regular))
+                    .foregroundColor(Constants.Colors.black)
+                Spacer()
             }
-            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
+
+            HStack {
+                Button(viewData.hotelAdress) {
+                    // any action
+                }
+                .font(Font(Constants.Fonts.sfpro14Regular))
+                Spacer()
+            }
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
         }
         .blockStyle(color: Constants.Colors.white)
+    }
+
+    // MARK: - twoColumnText
+    @ViewBuilder private func twoColumnText(_ textFirst: String, textTwo: String) -> some View {
+        HStack {
+            Text(textFirst)
+                .foregroundColor(Constants.Colors.greyTintColor)
+                .frame(width: 150, alignment: .leading)
+            Text(textTwo)
+                .foregroundColor(Color.black)
+
+            Spacer()
+        }
+        .font(Font(Constants.Fonts.sfpro16Light))
+        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
     }
 }

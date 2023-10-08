@@ -13,7 +13,7 @@ struct HotelInfoView: View {
     var body: some View {
         VStack(spacing: 0) {
             CarouselImage(item: viewData.imageData)
-            rating()
+            RatingView(text: viewData.rating + " " + viewData.ratingDescription)
             hotelName()
             hotelAdress()
             priceFortour()
@@ -21,31 +21,6 @@ struct HotelInfoView: View {
         .background(Constants.Colors.white)
         .cornerRadius(12, corners: [.bottomLeft, .bottomRight])
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-    }
-
-    // MARK: - Rating view
-
-    @ViewBuilder func rating() -> some View {
-        HStack {
-            HStack {
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .foregroundColor(Constants.Colors.ratingColor)
-                    .frame(width: 15, height: 15)
-                Text(String(viewData.rating))
-                    .font(Font(Constants.Fonts.sfpro16Regular))
-                    .foregroundColor(Constants.Colors.ratingColor)
-                Text(viewData.ratingDescription)
-                    .font(Font(Constants.Fonts.sfpro16Regular))
-                    .foregroundColor(Constants.Colors.ratingColor)
-            }
-            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            .frame(height: 29)
-            .background(Constants.Colors.ratingBackground)
-            .cornerRadius(5)
-            Spacer()
-        }
-        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
     }
 
     // MARK: - hotel name
@@ -84,7 +59,6 @@ struct HotelInfoView: View {
                 .foregroundColor(Constants.Colors.greyTintColor)
             Spacer()
         }
-
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10))
     }
 }

@@ -14,7 +14,7 @@ struct DropDownView: View {
     var body: some View {
         HStack {
             Text("\(sectionName) турист")
-                .font(Font(Constants.Fonts.sfpro22Regular))
+                .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
             Spacer()
             Button {
                 // drop menu
