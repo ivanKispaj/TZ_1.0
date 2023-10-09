@@ -20,11 +20,11 @@ struct RoomsSceneView<ViewModel: RoomsViewModelProtocol>: View {
         VStack {
             if self.viewModel.viewData.count > 0 {
                 let data = self.viewModel.viewData
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         ForEach(0 ..< data.count, id: \.self) { modelIndex in
 
-                            VStack() {
+                            VStack {
                                 VStack(alignment: .leading, spacing: 5) {
                                     RoomsSingleView(viewData: self.$viewModel.viewData[modelIndex])
                                     SelectedButton(buttonText: "Выбрать номер", action: {

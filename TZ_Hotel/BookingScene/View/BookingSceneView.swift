@@ -9,17 +9,15 @@ import SwiftUI
 
 struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
     @EnvironmentObject var coordinator: Coordinator
-    @State var phoneNumber: String = ""
-    @State var email: String = ""
-    @State var isDelete = false
+    @ObservedObject var viewModel: ViewModel
+    @State private var phoneNumber: String = ""
+    @State private var email: String = ""
     @FocusState var isStartEditingPhone: Bool
     @FocusState var isStartEditingEmail: Bool
-    @ObservedObject var viewModel: ViewModel
-    @State var prop: Bool = false
     var body: some View {
         VStack {
             if let viewData = self.viewModel.viewData {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack {
                         hotelShortData(viewData: viewData)
                         tourInfo(viewData: viewData)
@@ -227,6 +225,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
     }
 
     // MARK: - twoColumnText
+
     @ViewBuilder private func twoColumnText(_ textFirst: String, textTwo: String) -> some View {
         HStack {
             Text(textFirst)

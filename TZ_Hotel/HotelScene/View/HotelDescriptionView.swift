@@ -29,7 +29,7 @@ struct HotelDescriptionView: View {
 
     // MARK: - about hotel
 
-    @ViewBuilder func aboutHotel() -> some View {
+    @ViewBuilder private func aboutHotel() -> some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Об отеле")
@@ -41,37 +41,9 @@ struct HotelDescriptionView: View {
         }
     }
 
-//    // MARK: - pecilarities
-//
-//    @ViewBuilder private func pecularities() -> some View {
-//        ForEach(viewData.getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30), id: \.self) { arr in
-//            HStack(spacing: 0) {
-//                ForEach(arr, id: \.self) { word in
-//                    Text(word)
-//                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-//                        .font(Font(Constants.Fonts.sfpro16Regular))
-//                        .background(Constants.Colors.backGroundPeculiarities)
-//                        .foregroundColor(Constants.Colors.greyTintColor)
-//                        .cornerRadius(5)
-//                    Spacer()
-//                        .frame(width: 5, alignment: .leading)
-//                }
-//            }
-//            .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-//        }
-
-//        VStack {
-//            Text(viewData.hotelDescription)
-//                .foregroundColor(Constants.Colors.colorDescription)
-//                .font(Font(Constants.Fonts.sfpro16Light))
-//                .multilineTextAlignment(.leading)
-//        }
-//        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-//    }
-
     // MARK: - comfort
 
-    @ViewBuilder func comfort() -> some View {
+    @ViewBuilder private func comfort() -> some View {
         VStack(spacing: 0) {
             button(imageName: Constants.ImagesName.emojiHappy, text: "Удобства", subText: "Самое необходимое")
             devider()
@@ -83,9 +55,9 @@ struct HotelDescriptionView: View {
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
     }
 
-    // MARK: - button
+    // MARK: - private button
 
-    @ViewBuilder func button(imageName: String, text: String, subText: String) -> some View {
+    @ViewBuilder private func button(imageName: String, text: String, subText: String) -> some View {
         Button {
             // some action
         } label: {
@@ -119,7 +91,7 @@ struct HotelDescriptionView: View {
 
     // MARK: - Divider
 
-    @ViewBuilder func devider() -> some View {
+    @ViewBuilder private func devider() -> some View {
         Divider()
             .foregroundColor(Constants.Colors.derivrdColor)
             .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 10))

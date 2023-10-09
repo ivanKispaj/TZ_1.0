@@ -15,29 +15,19 @@ struct Delete: ViewModifier {
     @State var contentWidth: CGFloat = 0.0
     @State var willDeleteIfReleased = false
 
+    // MARK: Constants
+
+    let deletionDistance = CGFloat(200)
+    let halfDeletionDistance = CGFloat(50)
+    let tappableDeletionWidth = CGFloat(100)
+
+    // MARK: body
+
     func body(content: Content) -> some View {
         content
             .background(
                 GeometryReader { geometry in
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.red)
-                        Image(systemName: "trash")
-                            .foregroundColor(.white)
-                            .font(.title2.bold())
-                            .layoutPriority(-1)
-                    }
-                    .frame(width: -offset.width)
-                    .offset(x: geometry.size.width)
-                    .onAppear {
-                        contentWidth = geometry.size.width
-                    }
-                    .gesture(
-                        TapGesture()
-                            .onEnded {
-                                delete()
-                            }
-                    )
+                    deleteView(geometry: geometry)
                 }
             )
             .offset(x: offset.width, y: 0)
@@ -67,7 +57,7 @@ struct Delete: ViewModifier {
                         }
                     }
             )
-            .animation(.easeOut)
+            .animation(.easeOut, value: willDeleteIfReleased)
     }
 
     private func delete() {
@@ -84,11 +74,27 @@ struct Delete: ViewModifier {
         generator.impactOccurred()
     }
 
-    // MARK: Constants
-
-    let deletionDistance = CGFloat(200)
-    let halfDeletionDistance = CGFloat(50)
-    let tappableDeletionWidth = CGFloat(100)
+    @ViewBuilder private func deleteView(geometry: GeometryProxy) -> some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(.red)
+            Image(systemName: "trash")
+                .foregroundColor(.white)
+                .font(.title2.bold())
+                .layoutPriority(-1)
+        }
+        .frame(width: -offset.width)
+        .offset(x: geometry.size.width)
+        .onAppear {
+            contentWidth = geometry.size.width
+        }
+        .gesture(
+            TapGesture()
+                .onEnded {
+                    delete()
+                }
+        )
+    }
 }
 
 extension View {

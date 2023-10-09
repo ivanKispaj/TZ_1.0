@@ -25,7 +25,7 @@ struct HotelInfoView: View {
 
     // MARK: - hotel name
 
-    @ViewBuilder func hotelName() -> some View {
+    @ViewBuilder private func hotelName() -> some View {
         HStack {
             Text(viewData.name)
                 .font(Font(Constants.Fonts.sfpro22Regular))
@@ -35,7 +35,9 @@ struct HotelInfoView: View {
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
     }
 
-    @ViewBuilder func hotelAdress() -> some View {
+    // MARK: - Hotel adress
+
+    @ViewBuilder private func hotelAdress() -> some View {
         HStack {
             Button(viewData.adress) {
                 // any action
@@ -46,7 +48,9 @@ struct HotelInfoView: View {
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 10))
     }
 
-    @ViewBuilder func priceFortour() -> some View {
+    // MARK: - Price for tour
+
+    @ViewBuilder private func priceFortour() -> some View {
         HStack(alignment: .bottom) {
             Text("от")
                 .font(Font(Constants.Fonts.sfpro30Medium))

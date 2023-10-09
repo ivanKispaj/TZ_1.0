@@ -14,7 +14,7 @@ struct HotelMainSceneView<ViewModel: MainViewModelProtocol>: View {
     var body: some View {
         VStack {
             if let viewData = self.viewModel.viewData {
-                ScrollView(.vertical) {
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         HotelInfoView(viewData: viewData)
                         HotelDescriptionView(viewData: viewData)
