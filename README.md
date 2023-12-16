@@ -36,10 +36,11 @@
 </ul>
 
 ### App Preview
-https://github.com/ivanKispaj/TZ_1.0/assets/91827767/4b97de9f-0782-4521-9ac1-f821df7e5bbc
 
-### Preview added delete option
-https://github.com/ivanKispaj/TZ_1.0/assets/91827767/1bf7a21c-5547-4925-83e8-da50914ce8cd
+
+https://github.com/ivanKispaj/TZ_1.0/assets/91827767/a4936c04-7ce1-4e2b-8e2d-536eb3a103ac
+
+
 
 
 
