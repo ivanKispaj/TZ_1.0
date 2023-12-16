@@ -40,6 +40,8 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
                             // varyfy fill data and go last scene
                             if self.viewModel.verifyInputData(phone: phoneNumber, email: email) {
                                 coordinator.push(.lastScene)
+                            } else {
+                                
                             }
                         }
                     }
@@ -72,34 +74,34 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Тур")
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.greyTintColor)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
                 Spacer()
                 Text(viewData.getTourPrice())
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.black)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.black)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             HStack {
                 Text("Топливный сбор")
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.greyTintColor)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
                 Spacer()
                 Text(viewData.getFuelChange())
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.black)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.black)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             HStack {
                 Text("Сервисный сбор")
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.greyTintColor)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
                 Spacer()
                 Text(viewData.getServiceChange())
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.black)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.black)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             HStack {
                 Text("К оплате")
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light), color: Constants.Colors.greyTintColor)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular), color: Constants.Colors.greyTintColor)
                 Spacer()
                 Text(viewData.getSummTour())
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Bold), color: Constants.Colors.buttonBlueTint)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro16Semibold), color: Constants.Colors.buttonBlueTint)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }
@@ -113,7 +115,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("Добавить туриста")
-                    .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
+                    .fontWithForeground(font: Font(Constants.Fonts.sfpro22Medium), color: Constants.Colors.black)
                 Spacer()
                 Button {
                     // adding tourist
@@ -150,7 +152,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
     @ViewBuilder private func buyerInformation(viewData _: BookingParseModel) -> some View {
         VStack(alignment: .leading) {
             Text("Информация о покупателе")
-                .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
+                .fontWithForeground(font: Font(Constants.Fonts.sfpro22Medium), color: Constants.Colors.black)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             CustTextField(placeholder: "Номер телефона",
                           value: $phoneNumber,
@@ -172,7 +174,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
             VStack(alignment: .leading) {
                 Text("Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту")
-                    .font(Font(Constants.Fonts.sfpro14Light))
+                    .font(Font(Constants.Fonts.sfpro14Regular))
                     .foregroundColor(Constants.Colors.greyTintColor)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -205,7 +207,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
             HStack {
                 Text(viewData.hotelName)
-                    .font(Font(Constants.Fonts.sfpro22Regular))
+                    .font(Font(Constants.Fonts.sfpro22Medium))
                     .foregroundColor(Constants.Colors.black)
                 Spacer()
             }
@@ -236,7 +238,7 @@ struct BookingSceneView<ViewModel: BookingViewModelProtocol>: View {
 
             Spacer()
         }
-        .font(Font(Constants.Fonts.sfpro16Light))
+        .font(Font(Constants.Fonts.sfpro16Regular))
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
     }
 }

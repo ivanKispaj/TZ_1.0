@@ -23,7 +23,7 @@ struct LastScene: View {
                     }
                 VStack(alignment: .center) {
                     Text("Ваш заказ принят в работу")
-                        .font(Font(Constants.Fonts.sfpro22Regular))
+                        .font(Font(Constants.Fonts.sfpro22Medium))
                         .foregroundStyle(Constants.Colors.black)
                 }
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 0, trailing: 10))
@@ -39,7 +39,7 @@ struct LastScene: View {
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(Constants.Colors.greyTintColor)
-                    .font(Font(Constants.Fonts.sfpro16Light))
+                    .font(Font(Constants.Fonts.sfpro16Regular))
                     .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                 }
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))

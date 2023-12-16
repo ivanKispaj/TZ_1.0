@@ -14,7 +14,7 @@ struct DropDownView: View {
     var body: some View {
         HStack {
             Text("\(sectionName) турист")
-                .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular), color: Constants.Colors.black)
+                .fontWithForeground(font: Font(Constants.Fonts.sfpro22Medium), color: Constants.Colors.black)
             Spacer()
             Button {
                 // drop menu
@@ -66,7 +66,8 @@ struct DropDownView: View {
                 CustTextField(placeholder: "Срок действия загранпаспорта",
                               value: $tourist.passportValidityPeriod,
                               keyboardType: .default,
-                              fieldsState: $tourist.isValidData)
+                              fieldsState: $tourist.isValidData,
+                              wihtDataPicker: true)
             }
         }
     }

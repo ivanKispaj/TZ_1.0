@@ -74,12 +74,12 @@ enum Constants {
             return Color(hex: 0xFFC700, alpha: 0.2)
         }
 
-        static var derivrdColor: Color {
-            return Color(hex: 0x828796, alpha: 0.15)
+        static var dividerColor: Color {
+            return Color(hex: 0x828796)
         }
 
         static var greyTintColor: Color {
-            return Color(hex: 0x828796)
+            return dividerColor
         }
 
         static var backGroundPeculiarities: Color {
@@ -91,7 +91,7 @@ enum Constants {
         }
 
         static var buttonGrayBackground: Color {
-            return Color(hex: 0xFBFBFC)
+            return backGroundPeculiarities
         }
 
         static var buttonTitleBlack: Color {
@@ -100,44 +100,60 @@ enum Constants {
     }
 
     enum Fonts {
-        static var sfpro30Medium: UIFont {
-            return UIFont.systemFont(ofSize: 30, weight: .medium)
+        private static var sfProDisplaySemiboldName: String {
+                return "SFProDisplay-Semibold"
+        }
+        
+        private static var sfProDisplayMediumName: String {
+                return "SFProDisplay-Medium"
+        }
+        
+        private static var sfProDisplayRegularName: String {
+                return "SFProDisplay-Regular"
+        }
+        
+        static var sfpro30Semibold: UIFont {
+            return UIFont(name: sfProDisplaySemiboldName, size: 30) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
-        static var sfpro22Regular: UIFont {
-            return UIFont.systemFont(ofSize: 22, weight: .regular)
+        static var sfpro22Medium: UIFont {
+            return UIFont(name: sfProDisplayMediumName, size: 22) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
         static var headline1: UIFont {
-            return UIFont.systemFont(ofSize: 18, weight: .regular)
+            return UIFont(name: sfProDisplayMediumName, size: 18) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
         static var playsholder17: UIFont {
-            return UIFont.systemFont(ofSize: 17, weight: .light)
+            return UIFont(name: sfProDisplayRegularName, size: 17) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
-        static var sfpro16Bold: UIFont {
-            return UIFont.systemFont(ofSize: 16, weight: .bold)
+        static var headline3: UIFont {
+            return UIFont(name: sfProDisplayMediumName, size: 16) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
+        }
+        
+        static var sfpro16Medium: UIFont {
+            return  headline3
+        }
+        
+        static var sfpro16Semibold: UIFont {
+            return UIFont(name: sfProDisplaySemiboldName, size: 16) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
         static var sfpro16Regular: UIFont {
-            return UIFont.systemFont(ofSize: 16, weight: .regular)
+            return UIFont(name: sfProDisplayRegularName, size: 16) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
-        static var sfpro16Light: UIFont {
-            return UIFont.systemFont(ofSize: 16, weight: .light)
+        static var sfpro14Medium: UIFont {
+            return UIFont(name: sfProDisplayMediumName, size: 14) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
         static var sfpro14Regular: UIFont {
-            return UIFont.systemFont(ofSize: 14, weight: .regular)
-        }
-
-        static var sfpro14Light: UIFont {
-            return UIFont.systemFont(ofSize: 14, weight: .light)
+            return UIFont(name: sfProDisplayRegularName, size: 14) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
 
         static var callout2: UIFont {
-            return UIFont.systemFont(ofSize: 12, weight: .light)
+            return UIFont(name: sfProDisplayRegularName, size: 12) ?? UIFont.systemFont(ofSize: 10, weight: .ultraLight)
         }
     }
 

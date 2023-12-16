@@ -16,7 +16,9 @@ enum Page: Hashable {
 
 class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
-
+    
+    let timeoutNetworkForNetworkConnection = 20
+    
     func push(_ page: Page) {
         path.append(page)
     }
@@ -33,7 +35,7 @@ class Coordinator: ObservableObject {
     func build(page: Page) -> some View {
         switch page {
         case .hotel:
-            HotelMainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>()))
+            HotelMainSceneView(viewModel: MainViewModel(service: AlamofierService<HotelParseModel>(connectionTimeout: timeoutNetworkForNetworkConnection)))
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Отель")
@@ -42,7 +44,7 @@ class Coordinator: ObservableObject {
                     }
                 }
         case let .rooms(title):
-            RoomsSceneView(viewModel: RoomsViewModel(service: AlamofierService<RoomsParseModel>()))
+            RoomsSceneView(viewModel: RoomsViewModel(service: AlamofierService<RoomsParseModel>(connectionTimeout: timeoutNetworkForNetworkConnection)))
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(title)
@@ -51,7 +53,7 @@ class Coordinator: ObservableObject {
                     }
                 }
         case .booking:
-            BookingSceneView(viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>()))
+            BookingSceneView(viewModel: BookingViewModel(service: AlamofierService<BookingParseModel>(connectionTimeout: timeoutNetworkForNetworkConnection)))
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Бронирование")

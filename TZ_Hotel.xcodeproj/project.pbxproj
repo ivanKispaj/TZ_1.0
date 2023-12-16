@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556686E92B2D8EF600F6AF01 /* SFProDisplayRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556686E82B2D8EF600F6AF01 /* SFProDisplayRegular.otf */; };
+		556686EB2B2D8F1100F6AF01 /* SFProDisplayMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556686EA2B2D8F1100F6AF01 /* SFProDisplayMedium.otf */; };
+		556686ED2B2D90BE00F6AF01 /* SFProDisplaySemibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 556686EC2B2D90BE00F6AF01 /* SFProDisplaySemibold.otf */; };
 		8021FD082ACD3164006DBF6D /* Extension_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD072ACD3164006DBF6D /* Extension_String.swift */; };
 		8021FD0A2ACD31C6006DBF6D /* Extension_Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD092ACD31C6006DBF6D /* Extension_Array.swift */; };
 		8021FD182ACDE103006DBF6D /* Extension_Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021FD172ACDE103006DBF6D /* Extension_Font.swift */; };
@@ -59,6 +62,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		556686E82B2D8EF600F6AF01 /* SFProDisplayRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFProDisplayRegular.otf; sourceTree = "<group>"; };
+		556686EA2B2D8F1100F6AF01 /* SFProDisplayMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFProDisplayMedium.otf; sourceTree = "<group>"; };
+		556686EC2B2D90BE00F6AF01 /* SFProDisplaySemibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFProDisplaySemibold.otf; sourceTree = "<group>"; };
 		8021FD072ACD3164006DBF6D /* Extension_String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_String.swift; sourceTree = "<group>"; };
 		8021FD092ACD31C6006DBF6D /* Extension_Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Array.swift; sourceTree = "<group>"; };
 		8021FD0E2ACDC71D006DBF6D /* TZ-Hotel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TZ-Hotel-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -123,6 +129,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		556686E52B2D8E9600F6AF01 /* FontSFPro */ = {
+			isa = PBXGroup;
+			children = (
+				556686EC2B2D90BE00F6AF01 /* SFProDisplaySemibold.otf */,
+				556686E82B2D8EF600F6AF01 /* SFProDisplayRegular.otf */,
+				556686EA2B2D8F1100F6AF01 /* SFProDisplayMedium.otf */,
+			);
+			path = FontSFPro;
+			sourceTree = "<group>";
+		};
 		802D38632ACFCF420075DEFE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +229,7 @@
 		8086F72B2AC3E4FA00346571 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				556686E52B2D8E9600F6AF01 /* FontSFPro */,
 				803A82122AD136D3001BBD5D /* CustomModifiers */,
 				802D386B2ACFDD070075DEFE /* Protocols */,
 				802D38632ACFCF420075DEFE /* Helpers */,
@@ -455,7 +472,10 @@
 				8086F7272AC3DAAD00346571 /* Colors.xcassets in Resources */,
 				8086F74F2AC6FE2800346571 /* Image.xcassets in Resources */,
 				8086F71F2AC3D9FC00346571 /* Preview Assets.xcassets in Resources */,
+				556686ED2B2D90BE00F6AF01 /* SFProDisplaySemibold.otf in Resources */,
+				556686E92B2D8EF600F6AF01 /* SFProDisplayRegular.otf in Resources */,
 				8086F71C2AC3D9FC00346571 /* Assets.xcassets in Resources */,
+				556686EB2B2D8F1100F6AF01 /* SFProDisplayMedium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

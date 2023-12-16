@@ -43,7 +43,7 @@ struct CustTextField: View {
             if onTapped && !wihtDataPicker {
                 HStack {
                     TextField("", text: $value)
-                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Light),
+                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular),
                                             color: Constants.Colors.textFieldForeground)
                         .focused($isFocused)
                         .onSubmit {

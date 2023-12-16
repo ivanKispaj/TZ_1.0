@@ -12,12 +12,12 @@ struct HotelDescriptionView: View {
         VStack(alignment: .leading) {
             aboutHotel()
             GroupedText(data:
-                viewData.getPeculiarities(font: Constants.Fonts.sfpro16Regular,
+                viewData.getPeculiarities(font: Constants.Fonts.sfpro16Medium,
                                           padding: 30))
             VStack {
                 Text(viewData.hotelDescription)
                     .foregroundColor(Constants.Colors.colorDescription)
-                    .font(Font(Constants.Fonts.sfpro16Light))
+                    .font(Font(Constants.Fonts.sfpro16Medium))
                     .multilineTextAlignment(.leading)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
@@ -33,7 +33,7 @@ struct HotelDescriptionView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Об отеле")
-                    .font(Font(Constants.Fonts.sfpro22Regular))
+                    .font(Font(Constants.Fonts.sfpro22Medium))
                     .foregroundColor(Constants.Colors.black)
                 Spacer()
             }
@@ -68,10 +68,10 @@ struct HotelDescriptionView: View {
                     .foregroundColor(Constants.Colors.buttonTitleBlack)
                 VStack(alignment: .leading) {
                     Text(text)
-                        .font(Font(Constants.Fonts.sfpro16Regular))
+                        .font(Font(Constants.Fonts.sfpro16Medium))
                         .foregroundColor(Constants.Colors.buttonTitleBlack)
                     Text(subText)
-                        .font(Font(Constants.Fonts.sfpro14Regular))
+                        .font(Font(Constants.Fonts.sfpro14Medium))
                         .foregroundColor(Constants.Colors.greyTintColor)
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
@@ -93,7 +93,7 @@ struct HotelDescriptionView: View {
 
     @ViewBuilder private func devider() -> some View {
         Divider()
-            .foregroundColor(Constants.Colors.derivrdColor)
+            .foregroundColor(Constants.Colors.dividerColor)
             .padding(EdgeInsets(top: 0, leading: 65, bottom: 0, trailing: 10))
             .background(Constants.Colors.buttonGrayBackground)
     }

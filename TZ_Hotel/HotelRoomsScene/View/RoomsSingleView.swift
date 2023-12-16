@@ -13,17 +13,17 @@ struct RoomsSingleView: View {
         CarouselImage(item: viewData.imgData)
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         Text(viewData.name)
-            .fontWithForeground(font: Font(Constants.Fonts.sfpro22Regular),
+            .fontWithForeground(font: Font(Constants.Fonts.sfpro22Medium),
                                 color: Constants.Colors.black)
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         GroupedText(data: viewData.getPeculiarities(font: Constants.Fonts.sfpro16Regular, padding: 30))
         buttonInfo()
         HStack(alignment: .bottom) {
             Text(viewData.getPrice())
-                .fontWithForeground(font: Font(Constants.Fonts.sfpro30Medium),
+                .fontWithForeground(font: Font(Constants.Fonts.sfpro30Semibold),
                                     color: Constants.Colors.black)
             Text(viewData.priceDescription)
-                .fontWithForeground(font: Font(Constants.Fonts.sfpro14Light),
+                .fontWithForeground(font: Font(Constants.Fonts.sfpro14Regular),
                                     color: Constants.Colors.greyTintColor)
                 .padding(5)
         }
@@ -38,7 +38,7 @@ struct RoomsSingleView: View {
                 HStack(alignment: .center) {
                     Text("Подробнее о номере")
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Regular),
+                        .fontWithForeground(font: Font(Constants.Fonts.sfpro16Medium),
                                             color: Constants.Colors.buttonBlueTint)
                     Image(systemName: "chevron.right")
                         .resizable()

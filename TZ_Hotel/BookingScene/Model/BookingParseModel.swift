@@ -73,7 +73,14 @@ struct BookingParseModel: Decodable, Identifiable {
     }
 
     func getCountOfNights() -> String {
-        String(countOfNights)
+        var returnString = String(countOfNights)
+        let count = countOfNights >= 20 ? countOfNights % 10 : countOfNights
+        if count == 0 || count > 4 {
+            returnString += " ночей"
+        } else {
+            returnString += " ночи"
+        }
+        return returnString
     }
 
     func getTourPrice() -> String {

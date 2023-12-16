@@ -18,7 +18,7 @@ extension ConnectError: LocalizedError {
         case .noConnect:
             return NSLocalizedString("""
             Failure connection to internet or bad server response",
-            comment: "Inet connection failed
+            comment: "Inet connection failed or error connect for resource
             """, comment: "no connect to internet")
         case .parseError:
             return NSLocalizedString("Parse data response error, maybe bad server response", comment: "Parse error")

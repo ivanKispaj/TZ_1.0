@@ -21,7 +21,7 @@ struct SelectedButton: View {
             } label: {
                 Spacer()
                 Text(buttonText)
-                    .font(Font(Constants.Fonts.sfpro16Regular))
+                    .font(Font(Constants.Fonts.headline3))
                     .foregroundColor(Constants.Colors.headline3)
                 Spacer()
             }

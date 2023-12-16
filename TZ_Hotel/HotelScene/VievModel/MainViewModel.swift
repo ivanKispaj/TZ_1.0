@@ -20,9 +20,9 @@ class MainViewModel: MainViewModelProtocol {
         let group = DispatchGroup()
         var strUrls: [String]?
         var hotelPresentModel: HotelPresentModel?
-
+        group.enter()
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
-            group.enter()
+           
             self.networkService.loadDataToDecodableModel(endpoint: .hotel) { model, error in
                 guard error == nil else { return }
                 guard let parseModel = model as? HotelParseModel else { return }
@@ -34,11 +34,13 @@ class MainViewModel: MainViewModelProtocol {
                 if let imgUrls = strUrls {
                     for strUrl in imgUrls {
                         if let url = URL(string: strUrl) {
-                            group.enter()
-                            self.networkService.loadData(url: url) { respData, _ in
+                            self.networkService.loadData(url: url) { respData, error in
                                 if let data = respData, let img = UIImage(data: data) {
-                                    hotelPresentModel?.imageData.append(img)
-                                    group.leave()
+                                    DispatchQueue.main.async {
+                                        self.viewData?.imageData.append(img)
+                                    }
+                                } else {
+                                    print(error?.localizedDescription ?? "Error with network response or request or timeout connection!")
                                 }
                             }
                         }

@@ -22,9 +22,9 @@ enum UrlPath: String {
         }
     }
 
-    case hotel = "/v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3"
-    case rooms = "/v3/f9a38183-6f95-43aa-853a-9c83cbb05ecd"
-    case booking = "/v3/e8868481-743f-4eb2-a0d7-2bc4012275c8"
+    case hotel = "/v3/d144777c-a67f-4e35-867a-cacc3b827473"
+    case rooms = "/v3/8b532701-709e-4194-a41c-1a903af00195"
+    case booking = "/v3/63866c74-d593-432c-af8e-f279d1a8d2ff"
 
     var url: URL? {
         let endpoint = Endpoint(path: rawValue, queryItems: [])

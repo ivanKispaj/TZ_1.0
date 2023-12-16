@@ -28,7 +28,7 @@ struct HotelInfoView: View {
     @ViewBuilder private func hotelName() -> some View {
         HStack {
             Text(viewData.name)
-                .font(Font(Constants.Fonts.sfpro22Regular))
+                .font(Font(Constants.Fonts.sfpro22Medium))
                 .foregroundColor(Constants.Colors.black)
             Spacer()
         }
@@ -53,13 +53,13 @@ struct HotelInfoView: View {
     @ViewBuilder private func priceFortour() -> some View {
         HStack(alignment: .bottom) {
             Text("от")
-                .font(Font(Constants.Fonts.sfpro30Medium))
+                .font(Font(Constants.Fonts.sfpro30Semibold))
                 .foregroundColor(Constants.Colors.black)
             Text(viewData.getMinPrice())
                 .foregroundColor(Constants.Colors.black)
-                .font(Font(Constants.Fonts.sfpro30Medium))
+                .font(Font(Constants.Fonts.sfpro30Semibold))
             Text(viewData.priceDescription)
-                .font(Font(Constants.Fonts.sfpro14Light))
+                .font(Font(Constants.Fonts.sfpro16Regular))
                 .foregroundColor(Constants.Colors.greyTintColor)
             Spacer()
         }

@@ -19,8 +19,9 @@ class RoomsViewModel: RoomsViewModelProtocol {
         let group = DispatchGroup()
         var roomsPresModel: [RoomsPresentModel] = []
         var roomsImg: [Int: [String]] = [:]
+        group.enter()
         DispatchQueue.global(qos: .userInteractive).async(group: group) {
-            group.enter()
+         
             self.networkService.loadDataToDecodableModel(endpoint: .rooms) { model, error in
                 guard error == nil else { return }
                 guard let roomsModel = model as? RoomsParseModel else { return }
@@ -28,18 +29,16 @@ class RoomsViewModel: RoomsViewModelProtocol {
                     roomsPresModel.append(RoomsPresentModel(data: room))
                     roomsImg[index] = room.imgUrl
                 }
-                DispatchQueue.main.async {
-                    self.viewData = roomsPresModel
-                }
+                
                 for (key, value) in roomsImg {
                     for img in value {
                         if let url = URL(string: img) {
-                            group.enter()
-                            self.networkService.loadData(url: url) { data, _ in
+                            self.networkService.loadData(url: url) { data, error in
                                 if let data = data, let img = UIImage(data: data) {
-                                    roomsPresModel[key].imgData.append(img)
+                                    DispatchQueue.main.async {
+                                        self.viewData[key].imgData.append(img)
+                                    }
                                 }
-                                group.leave()
                             }
                         }
                     }
@@ -47,6 +46,7 @@ class RoomsViewModel: RoomsViewModelProtocol {
                 group.leave()
             }
         }
+        
         group.notify(queue: DispatchQueue.main) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
