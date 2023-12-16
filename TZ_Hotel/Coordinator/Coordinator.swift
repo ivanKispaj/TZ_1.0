@@ -17,7 +17,7 @@ enum Page: Hashable {
 class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
     
-    let timeoutNetworkForNetworkConnection = 20
+    let timeoutNetworkForNetworkConnection = 60.0 // timeout internet request in seconds
     
     func push(_ page: Page) {
         path.append(page)
